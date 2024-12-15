@@ -1,0 +1,94 @@
+name: ci
+
+on: push
+
+jobs:
+  ruff-check:
+    if: "!contains(github.event.head_commit.message, 'hotfix') && !contains(github.event.head_commit.message, 'production-testing-deployment')"
+    name: Ruff check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+      - name: Install poetry
+        run: pip install poetry==1.8.5
+      - name: Install dependencies
+        working-directory: ./src
+        run: poetry install --with test
+      - name: Ruff check
+        working-directory: ./src
+        run: poetry run ruff check .
+  pylint-check:
+    if: "!contains(github.event.head_commit.message, 'hotfix') && !contains(github.event.head_commit.message, 'production-testing-deployment')"
+    name: Pylint check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+      - name: Install poetry
+        run: pip install poetry==1.8.5
+      - name: Install dependencies
+        working-directory: ./src
+        run: poetry install --with test
+      - name: Pylint check
+        working-directory: ./src
+        run: poetry run pylint --fail-under=8 apps backend
+  tests:
+    if: "!contains(github.event.head_commit.message, 'hotfix') && !contains(github.event.head_commit.message, 'production-testing-deployment')"
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres_tests
+          POSTGRES_PASSWORD: postgres_tests
+          POSTGRES_DB: postgres_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    name: Tests
+    needs:
+      - pylint-check
+      - ruff-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+      - name: Install poetry
+        run: pip install poetry==1.8.5
+      - name: Install dependencies
+        working-directory: ./src
+        run: poetry install --with test
+      - name: Update env values
+        run: |
+          echo "POSTGRES_USER=postgres_tests" >> .env-dist
+          echo "POSTGRES_PASSWORD=postgres_tests" >> .env-dist
+          echo "POSTGRES_EXTERNAL_PORT=5432" >> .env-dist
+          echo "POSTGRES_DB=postgres_test" >> .env-dist
+          echo "POSTGRES_HOST=localhost" >> .env-dist
+          echo "SOURCE_ROOT_PATH=./src" >> .env-dist
+      - name: Setup default env values
+        uses: cardinalby/export-env-action@v2
+        with:
+          envFile: '.env-dist'
+      - name: Test core
+        working-directory: ./src
+        run: poetry run coverage run manage.py test --parallel=4 --failfast
+
+  production-deploy:
+    if: "github.ref == 'refs/heads/production' || contains(github.event.head_commit.message, 'production-testing-deployment')"
+    needs: tests
+    name: Production deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running ssh deployment
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          password: ${{ secrets.PROD_PASSWORD }}
+          port: ${{ secrets.PROD_PORT }}
+          script: cd backend && git fetch && git pull && make complete-build && cd && echo "cicd-backend,$(date '+%Y-%m-%d %H:%M:%S')" >> deployments.csv

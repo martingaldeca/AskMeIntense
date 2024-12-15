@@ -1,0 +1,79 @@
+services:
+  backend:
+    container_name: ${PROJECT_NAME}_backend
+    hostname: backend
+    restart: always
+    image: ${PROJECT_NAME}_backend_image
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    volumes:
+      - ./src:/src/
+      - vol_logs_askmeintense:/src/logs
+      - vol_media_askmeintense:/src/media
+    env_file:
+      - .env
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    networks:
+      - askmeintense_network
+    depends_on:
+      - postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 50m
+        max-file: "2"
+
+  postgres:
+    image: postgres:17
+    container_name: ${PROJECT_NAME}_postgres
+    hostname: postgres
+    restart: always
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 50m
+        max-file: "2"
+    ports:
+      - "${POSTGRES_EXTERNAL_PORT}:5432"
+    volumes:
+      - vol_postgres_db_askmeintense:/var/lib/postgresql/data
+      - vol_logs_askmeintense:/logs
+      - vol_media_askmeintense:/src/media
+    networks:
+      - askmeintense_network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    image: ${PROJECT_NAME}_nginx_image
+    restart: always
+    container_name: ${PROJECT_NAME}_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    volumes:
+      - ./docker/nginx/fullchain.pem:/fullchain.pem
+      - ./docker/nginx/privkey.pem:/privkey.pem
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - vol_media_askmeintense:/src/media
+    networks:
+      - askmeintense_network
+
+networks:
+  askmeintense_network:
+    driver: bridge
+
+volumes:
+  vol_media_askmeintense:
+    driver: local
+  vol_logs_askmeintense:
+    driver: local
+  vol_postgres_db_askmeintense:
+    driver: local
