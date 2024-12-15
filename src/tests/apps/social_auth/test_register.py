@@ -1,10 +1,8 @@
-import os
 from unittest import mock
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 from core.factories import VerifiedUserFactory
 from core.models import User
-from django.contrib.auth import authenticate
 from django.test import TestCase
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import AuthenticationFailed

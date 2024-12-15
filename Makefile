@@ -89,6 +89,8 @@ isort:
 
 code-style: isort black
 
+style-and-linters: code-style linters
+
 IMAGES := $(shell docker images -qa)
 clean-images:
 	$s docker rmi $(IMAGES) --force

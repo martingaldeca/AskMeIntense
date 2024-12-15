@@ -1,0 +1,48 @@
+repos:
+  - repo: https://github.com/psf/black  # Black
+    rev: 24.10.0
+    hooks:
+      - id: black
+  - repo: https://github.com/charliermarsh/ruff-pre-commit  # Ruff
+    # Ruff version.
+    rev: 'v0.8.3'
+    hooks:
+      - id: ruff
+        args: [ --exit-non-zero-on-fix ]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: name-tests-test
+        args:
+          - --pytest-test-first
+      - id: pretty-format-json
+        args:
+          - --autofix
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0  # Use the ref you want to point at
+    hooks:
+      - id: python-use-type-annotations
+      - id: python-no-eval
+      - id: python-no-log-warn
+      - id: rst-backticks
+      - id: rst-directive-colons
+      - id: rst-inline-touching-normal
+      - id: text-unicode-replacement-char
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.0
+    hooks:
+      - id: pyupgrade
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
