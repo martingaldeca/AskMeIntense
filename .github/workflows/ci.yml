@@ -91,4 +91,4 @@ jobs:
           username: ${{ secrets.PROD_USERNAME }}
           password: ${{ secrets.PROD_PASSWORD }}
           port: ${{ secrets.PROD_PORT }}
-          script: cd backend && git fetch && git pull && make complete-build && cd && echo "cicd-backend,$(date '+%Y-%m-%d %H:%M:%S')" >> deployments.csv
+          script: cd AskMeIntense && git fetch && git pull && make complete-build && cd && echo "cicd-backend,$(date '+%Y-%m-%d %H:%M:%S')" >> deployments.csv

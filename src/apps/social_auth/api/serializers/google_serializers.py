@@ -25,4 +25,6 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
             )
             raise AuthenticationFailed(detail=_("Not valid client"))
 
-        return RegisterSocialUser.authenticate_or_register(provider=User.GOOGLE_PROVIDER, user_data=user_data)
+        return RegisterSocialUser.authenticate_or_register(
+            provider=User.AuthProviders.GOOGLE_PROVIDER, user_data=user_data
+        )
