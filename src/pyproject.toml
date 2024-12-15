@@ -1,0 +1,91 @@
+[tool.poetry]
+name = "askmeintense"
+version = "0.1.0"
+description = ""
+authors = ["martingaldeca <martingaldeca@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0.0"
+djangorestframework = "3.15.2"
+django = "5.1.3"
+django-cors-headers = "4.6.0"
+django-model-utils = "5.0.0"
+django-jet-reboot = "1.3.10"
+ipython = "8.30.0"
+drf-spectacular = "0.28.0"
+django-simple-history = "3.7.0"
+django-debug-toolbar = "4.4.6"
+drf-api-logger = "1.1.16"
+gunicorn = "23.0.0"
+whitenoise = "6.8.2"
+pillow = "11.0.0"
+djangorestframework-simplejwt = "5.3.1"
+django-axes = "7.0.0"
+psycopg2-binary = "2.9.10"
+django-extensions = "3.2.3"
+oauthlib = "3.2.2"
+google-api-python-client = "2.154.0"
+openai = "1.55.3"
+
+[tool.poetry.group.test.dependencies]
+black = "24.10.0"
+isort = "5.13.2"
+factory-boy = "3.3.1"
+ipdb = "0.13.13"
+ruff = "0.8.1"
+pylint = "3.3.2"
+coverage = "7.6.8"
+freezegun = "1.5.1"
+pytz = "2024.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint]
+max-line-length = 120
+disable = [
+    "C0114", "W0718", "R0902", "R0903", "C0115", 'C0103', 'R0914', "C0116", "C0411",
+    "R0401", "R0801", "E0611", "E0401", "F0010", "R0917", "R0913", "C0415", "W0212",
+    "R0901", "W0223", "E1134"
+]
+good-names = ['ex', ]
+generated-members = ["objects"]
+ignore-paths = [
+    "apps/core/migrations/",
+    "apps/social_auth/migrations/",
+]
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+skip = "__init__.py"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+relative_files = true
+omit = [
+    "/src/tests/*",
+    "/src/backend/*",
+    "/src/manage.py",
+    "*/__init__.py",
+    "*/apps.py",
+    "*/urls.py",
+    "*/migrations/*",
+    "*/factories/*",
+]
+
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".pytest_cache",
+    "venv",
+    "*/migrations/*"
+]
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]

@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+{% load static i18n %}
+
+{# Setup favicon #}
+{% block extrahead %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'logo/logo.png' %}" />
+{% endblock %}
+
+{# Setup browser tab label #}
+{% block title %}{{ title }} |  AskMeIntense{% endblock %}
+
+{# Setup branding #}
+{% block branding %}
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">
+            <img
+                src="{% static 'logo/logo.png' %}"
+                alt="AskMeIntense"
+                height="50%"
+                width="50%"
+            >
+            <br><br>
+            AskMeIntense
+            <br><br>
+        </a>
+    </h1>
+{% endblock %}
