@@ -39,7 +39,7 @@ class QuestionTestCase(TestCase):
                 question.deny()
 
     def test_add_level_category(self):
-        question: Question = QuestionFactory()
+        question: Question = QuestionFactory(add_level_categories__total=0)
         new_category: Category = CategoryFactory()
         new_level: Level = LevelFactory()
         self.assertFalse(question.categories.filter(id=new_category.id).exists())
