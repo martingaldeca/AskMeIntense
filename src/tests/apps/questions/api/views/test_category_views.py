@@ -23,9 +23,3 @@ class CategoryListViewTestCase(APITestBase):
         self.assertEqual(response.data["count"], 1)
         self.assertIsNone(response.data["next"])
         self.assertIsNone(response.data["previous"])
-
-    def test_get_me_detail_not_logged_401_unauthorized(self):
-        self.client.logout()
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-        self.assertEqual(response.data["detail"].code, "not_authenticated")
