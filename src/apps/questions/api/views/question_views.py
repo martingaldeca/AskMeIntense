@@ -3,7 +3,7 @@ from drf_spectacular.utils import OpenApiParameter, extend_schema
 from questions.api.serializers import QuestionSerializer
 from questions.models import Question
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 
 
 @extend_schema(
@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated
     ],
 )
 class QuestionListView(ListAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     serializer_class = QuestionSerializer
 
     def get_queryset(self):
