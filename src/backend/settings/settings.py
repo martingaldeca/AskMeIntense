@@ -288,6 +288,12 @@ ALLOWED_HOSTS = [
     "localhost",
     "0.0.0.0",
     "127.0.0.1",
+    "https://localhost",
+    "https://0.0.0.0",
+    "https://127.0.0.1",
+    "http://localhost",
+    "http://0.0.0.0",
+    "http://127.0.0.1",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -303,7 +309,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://0.0.0.0",
     "http://localhost:3000",
     "http://0.0.0.0:3000",
-    "http://127.0.0.1:3000",
+    "https://127.0.0.1:3000",
+    "https://localhost",
+    "https://0.0.0.0",
+    "https://localhost:3000",
+    "https://0.0.0.0:3000",
+    "https://127.0.0.1:3000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
