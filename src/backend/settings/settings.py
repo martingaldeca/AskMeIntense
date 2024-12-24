@@ -29,7 +29,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 ROOT_URLCONF = "backend.urls"
 
 INTERNET_PORT = env.get("INTERNET_PORT", "80")
-INTERNAL_DEV_IP = env.get("INTERNAL_DEV_IP", "127.0.0.1")
+PUBLIC_IP = env.get("PUBLIC_IP", "127.0.0.1")
 
 LANGUAGE_CODE = "es-es"
 TIME_ZONE = "Europe/Madrid"
@@ -283,7 +283,7 @@ ALLOWED_HOSTS = [
     "askmeintense.com",
     "backend.askmeintense.com",
     f"backend.askmeintense.com:{INTERNET_PORT}",
-    f"{INTERNAL_DEV_IP}",
+    f"{PUBLIC_IP}",
     "www.askmeintense.com",
     "localhost",
     "0.0.0.0",
@@ -297,8 +297,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://askmeintense.com",
     "http://www.askmeintense.com",
     "https://www.askmeintense.com",
-    f"https://{INTERNAL_DEV_IP}",
-    f"http://{INTERNAL_DEV_IP}",
+    f"https://{PUBLIC_IP}",
+    f"http://{PUBLIC_IP}",
     "http://localhost",
     "http://0.0.0.0",
     "http://localhost:3000",
@@ -313,8 +313,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://askmeintense.com",
     "http://www.askmeintense.com",
     "https://www.askmeintense.com",
-    f"https://{INTERNAL_DEV_IP}",
-    f"http://{INTERNAL_DEV_IP}",
+    f"https://{PUBLIC_IP}",
+    f"http://{PUBLIC_IP}",
     "http://localhost",
     "http://0.0.0.0",
     "http://localhost:3000",

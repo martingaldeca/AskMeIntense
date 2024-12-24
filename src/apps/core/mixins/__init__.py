@@ -1,0 +1,1 @@
+from .view_mixins import MultipleFieldLookupMixin
