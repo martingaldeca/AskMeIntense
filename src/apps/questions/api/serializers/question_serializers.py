@@ -3,7 +3,14 @@ from questions.api.serializers import CategorySerializer, LevelSerializer
 from questions.models import Question
 
 
-class QuestionSerializer(UUIDModelSerializerMixin):
+class SimpleQuestionSerializer(UUIDModelSerializerMixin):
+
+    class Meta:
+        model = Question
+        fields = ["uuid", "question", "status", "example"]
+
+
+class QuestionSerializer(SimpleQuestionSerializer):
     categories = CategorySerializer(many=True)
     levels = LevelSerializer(many=True)
 

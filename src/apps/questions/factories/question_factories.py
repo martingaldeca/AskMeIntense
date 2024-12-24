@@ -1,5 +1,5 @@
 from random import randint
-
+from django.conf import settings
 from factory import post_generation
 from factory.django import DjangoModelFactory
 from factory.fuzzy import FuzzyText
@@ -20,11 +20,17 @@ class QuestionFactory(DjangoModelFactory):
 
         min_entries = kwargs.get("min", 1)
         max_entries = kwargs.get("max", 3)
+
         if total := kwargs.get("total", None):
             min_entries = max_entries = total
+        if kwargs.get("level_number"):
+            min_entries = max_entries = total = 1
         if total != 0:
             for _ in range(randint(min_entries, max_entries)):
-                self.add_level_category(level=LevelFactory(), category=CategoryFactory())  # pylint: disable=E1101
+                self.add_level_category(
+                    level=LevelFactory(number=kwargs.get("level_number", randint(1, settings.MAX_LEVEL_ALLOWED))),
+                    category=CategoryFactory(name=kwargs.get("category_name", FuzzyText().fuzz())),
+                )  # pylint: disable=E1101
 
 
 class ApprovedQuestionFactory(QuestionFactory):

@@ -22,6 +22,12 @@ python3 manage.py collectstatic --no-input
 # Create the superuser for the platform
 python3 manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model();User.objects.filter(email='${SUPERUSER_MAIL}').exists() or User.objects.create_superuser('${SUPERUSER_MAIL}', '${SUPERUSER_PASSWORD}')"
 
+# Load fixtures
+python3 manage.py loaddata apps/questions/fixtures/categories.json
+python3 manage.py loaddata apps/questions/fixtures/levels.json
+python3 manage.py loaddata apps/questions/fixtures/questions.json
+python3 manage.py loaddata apps/questions/fixtures/question_level_categories.json
+
 # Set the number of Django threads to use
 num_threads=${DJANGO_THREADS}
 

@@ -1,0 +1,1433 @@
+[
+  {
+    "fields": {
+      "example": "Dir\u00eda que el verde, porque me relaja y me recuerda a la naturaleza.",
+      "question": "Tu color favorito",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 0
+  },
+  {
+    "fields": {
+      "example": "El perro, porque son muy fieles y cari\u00f1osos.",
+      "question": "Tu animal favorito",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "example": "El de 'Friends', siempre me pone de buen humor con su m\u00fasica.",
+      "question": "Opening de serie favorito",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "example": "Leer novelas de misterio; me encanta sumergirme en la trama.",
+      "question": "Pasatiempo favorito",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "example": "Me gustar\u00eda teletransportarme para ahorrar tiempo en viajes.",
+      "question": "Elegir un superpoder",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "example": "Prefiero la monta\u00f1a, me encanta hacer senderismo y respirar aire puro.",
+      "question": "Playa-Monta\u00f1a",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "example": "Suelo escuchar rock alternativo, aunque tambi\u00e9n me gusta el pop.",
+      "question": "Tipo de m\u00fasica",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "example": "La pizza con amigos un viernes por la noche.",
+      "question": "Comida-situaci\u00f3n favorita",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "example": "La comida japonesa, especialmente el sushi.",
+      "question": "Nacionalidad de comida favorita",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "example": "El agua, porque se adapta a cualquier forma y es esencial para la vida.",
+      "question": "\u00bfCu\u00e1l es tu elemento favorito?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "example": "Me gustar\u00eda ir al Renacimiento para ver en vivo el auge del arte y la ciencia.",
+      "question": "\u00bfA qu\u00e9 \u00e9poca hist\u00f3rica viajar\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "example": "Queso y frutas, son b\u00e1sicos que no pueden faltar.",
+      "question": "\u00bfQu\u00e9 hay siempre en tu nevera?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "example": "En 'Harry Potter' me identifico con Ron: leal, pero a veces inseguro.",
+      "question": "\u00bfQu\u00e9 personaje eres de X serie/peli?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "example": "Salir a conciertos y ver a mis amigos cara a cara.",
+      "question": "\u00bfQu\u00e9 es lo que m\u00e1s echaste de menos durante el Covid?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "example": "Tarde de sof\u00e1, manta y una peli, acompa\u00f1ado de una comida casera.",
+      "question": "\u00bfPlan de domingo perfecto?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "example": "No como picante extremo, me sienta fatal.",
+      "question": "\u00bfHay algo que no comas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "example": "Soy m\u00e1s bien un mar en calma, prefiero la tranquilidad.",
+      "question": "\u00bfEres un mar agitado o en calma?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "example": "El olor del caf\u00e9 reci\u00e9n hecho por la ma\u00f1ana.",
+      "question": "\u00bfOlor favorito?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "example": "Prefiero la bo\u00f1iga que sabe a mi plato favorito. Al menos disfrutar\u00eda el sabor.",
+      "question": "\u00bfCon qu\u00e9 te quedas si tienes que escoger entre darle un bocado a tu plato de comida favorito con sabor a bo\u00f1iga o un bocado a una bo\u00f1iga que sabe a tu plato favorito?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "example": "S\u00ed, creo que hay ciertas cosas que est\u00e1n destinadas a suceder, aunque podemos cambiar mucho con nuestras acciones.",
+      "question": "\u00bfCrees en el destino?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "example": "Mi profe de literatura del instituto, hac\u00eda que los libros cobraran vida.",
+      "question": "\u00bfCu\u00e1l es el mejor profesor que has tenido y por qu\u00e9?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "example": "Estudi\u00e9 ingenier\u00eda, porque me atra\u00eda resolver problemas de manera l\u00f3gica.",
+      "question": "\u00bfQu\u00e9 has estudiado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "example": "S\u00ed, trabajo justo en el campo que me apasiona: la programaci\u00f3n.",
+      "question": "\u00bfTe dedicas a lo quieres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "example": "Para conocerte mejor y pasar un buen rato compartiendo historias.",
+      "question": "\u00bfPor qu\u00e9 est\u00e1s aqu\u00ed?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "example": "Para m\u00ed, mi abuela, porque su belleza tambi\u00e9n viene de su forma de ser.",
+      "question": "\u00bfCu\u00e1l es la persona m\u00e1s guapa que conoces sobre la capa de la tierra?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "example": "Prefiero el calor, me gusta la playa y el buen tiempo.",
+      "question": "\u00bfFr\u00edo o calor?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "example": "Ser\u00eda el reloj, porque intento ser puntual y organizado.",
+      "question": "\u00bfSi fueras de la Bella y la Bestia, qu\u00e9 objeto ser\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "example": "Harry Potter, me cri\u00e9 con esa saga y le tengo mucho cari\u00f1o.",
+      "question": "\u00bfHarry Potter o El Se\u00f1or de los Anillos?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "example": "Necesito al menos 10 minutos y un caf\u00e9 para estar plenamente funcional.",
+      "question": "\u00bfCu\u00e1nto tiempo tiene que pasar desde que te despiertas hasta que alguien te puede hablar?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "example": "Me encantaba 'Dragon Ball', ve\u00eda cada episodio con entusiasmo.",
+      "question": "\u00bfSerie de dibujos favorita de peque\u00f1os?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "example": "La rosa blanca, me parece muy elegante y pura.",
+      "question": "\u00bfCu\u00e1l es tu flor favorita?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "example": "Honestamente, pensar\u00eda en mi supervivencia, as\u00ed que despedir\u00eda a esa persona.",
+      "question": "O despides a alguien de 50 a\u00f1os de antig\u00fcedad o te despiden. \u00bfQu\u00e9 haces?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "example": "\u00daltimamente dedico mucho tiempo al trabajo y a hacer ejercicio.",
+      "question": "\u00bfA qu\u00e9 actividades dedicas m\u00e1s tiempo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "example": "Darth Vader, porque su historia de redenci\u00f3n me parece muy interesante.",
+      "question": "\u00bfCu\u00e1l es tu villano favorito?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "example": "Te recomiendo la serie 'Dark', es un rompecabezas temporal fascinante.",
+      "question": "Recomi\u00e9ndame una serie/peli/libro",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "example": "Con Marie Curie, para entender c\u00f3mo fue abrirse camino en la ciencia.",
+      "question": "Con qu\u00e9 personaje hist\u00f3rico querr\u00edas tener una conversaci\u00f3n",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "example": "Quiz\u00e1 con Cleopatra, su personalidad y poder debieron ser impresionantes.",
+      "question": "Con qu\u00e9 personaje hist\u00f3rico te liar\u00edas",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "example": "Una navaja multiusos, un mechero y un libro para no aburrirme.",
+      "question": "Qu\u00e9 te llevar\u00edas a una isla desierta.",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "example": "La hipocres\u00eda, no soporto la doble cara de algunas personas.",
+      "question": "Qu\u00e9 es lo que menos te gusta en el mundo",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "example": "Volar como un \u00e1guila, me encantar\u00eda ver todo desde arriba.",
+      "question": "Si pudieras tener alguna capacidad de un animal \u00bfqu\u00e9 elegir\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "example": "Probablemente Instagram, me gusta ver fotos y publicar historias.",
+      "question": "\u00bfCu\u00e1l es la app que m\u00e1s usas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "example": "Ir a una playa paradis\u00edaca y desconectar por completo del mundo.",
+      "question": "\u00bfCu\u00e1les ser\u00edan tus vacaciones perfectas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "example": "Le dir\u00eda que llame a un abogado y lo convencer\u00eda de entregarse o buscar ayuda legal.",
+      "question": "\u00bfSi viene a verte tu mejor amigo con un cad\u00e1ver en su maletero, qu\u00e9 haces?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "example": "Ser\u00eda un caos de procrastinadores, as\u00ed que buscar\u00eda alguna forma de organizarnos.",
+      "question": "\u00bfQu\u00e9 har\u00edas en un mundo en el que todos sus habitantes fueran otros \"t\u00fas\" de personalidad?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "example": "Soy m\u00e1s profesional, me form\u00e9 en algo espec\u00edfico y lo ejerzo.",
+      "question": "\u00bfEres vocacional o profesional?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "example": "Muy nervioso, pero inolvidable. Fue durante una fiesta en el instituto.",
+      "question": "\u00bfC\u00f3mo fue tu primer beso?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "example": "Desviar\u00eda el tranv\u00eda para salvar m\u00e1s vidas, aunque es una decisi\u00f3n dur\u00edsima.",
+      "question": "\u00bfDilema del tranv\u00eda?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "example": "No, creo que parte de la gracia de la vida es que acaba y hay que aprovecharla.",
+      "question": "\u00bfTe gustar\u00eda ser inmortal?\u00bfPor qu\u00e9?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "example": "Dos o tres veces, suele ser por tonter\u00edas del d\u00eda a d\u00eda.",
+      "question": "\u00bfCu\u00e1ntas veces te enfadas a la semana?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "example": "Prefiero 10 la semana que viene, soy paciente si vale la pena la recompensa.",
+      "question": "\u00bf1 euro hoy o 10 la semana que viene?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "example": "A mi mejor amigo, s\u00e9 que har\u00edamos un gran equipo para sobrevivir.",
+      "question": "Si tuvieras que llevarte a una persona a una isla desierta, \u00bfa qui\u00e9n te llevar\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "example": "Cuando no paro de pensar en esa persona y quiero pasar mucho tiempo con ella.",
+      "question": "\u00bfT\u00fa c\u00f3mo identificas que alguien te gusta?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "example": "La gente que no respeta su palabra, me frustra mucho.",
+      "question": "\u00bfQu\u00e9 te enfada?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "example": "No soporto que me toquen los pies, me pone muy nervioso.",
+      "question": "\u00bfQu\u00e9 parte del cuerpo te gusta menos que te toquen?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "example": "Seguir\u00eda mi rutina, aunque ser\u00eda un d\u00eda muy extra\u00f1o y con muchas dudas.",
+      "question": "\u00bfQu\u00e9 har\u00edas si, durante un d\u00eda, desaparecen todas las personas del sexo contrario?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "example": "Creo que soy un olor c\u00edtrico, fresco y un poco en\u00e9rgico.",
+      "question": "\u00bfQu\u00e9 olor eres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "example": "Positiva, normalmente busco el lado bueno en todo.",
+      "question": "\u00bfTe consideras una persona positiva o negativa?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "example": "Espero no tener que hacerlo jam\u00e1s, pero supongo que a la m\u00ednima necesaria para salvar mi vida.",
+      "question": "\u00bfA cu\u00e1ntas personas estar\u00edas dispuesto a matar en defensa propia?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "example": "Mis ojos, me gusta su color y expresan bastante.",
+      "question": "\u00bfQu\u00e9 es lo que m\u00e1s te gusta de tu cuerpo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "example": "Comprar\u00eda una casa a mis padres, viajar\u00eda y donar\u00eda a causas ben\u00e9ficas.",
+      "question": "\u00bfSi tuvieras tanto dinero como quisieras, qu\u00e9 har\u00edas con \u00e9l?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "example": "Me preocupa el futuro laboral y si podr\u00e9 cumplir mis metas.",
+      "question": "\u00bfAhora qu\u00e9 te preocupa?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "example": "Me gustar\u00eda ser un poco m\u00e1s alto, pero no me obsesiona.",
+      "question": "\u00bfSi pudieras cambiar cualquier cosa de tu cuerpo, qu\u00e9 ser\u00eda?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "example": "He estado aprendiendo a tocar el piano, y me encanta el progreso.",
+      "question": "\u00bfA qu\u00e9 te dedicas \u00faltimamente que te hace disfrutar de tu tiempo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "example": "Estoy con 'El nombre del viento' de Patrick Rothfuss, es fascinante.",
+      "question": "\u00bfQu\u00e9 est\u00e1s leyendo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "example": "Un \u00e1lbum de fotos hecho a mano para mi madre en su cumplea\u00f1os.",
+      "question": "\u00bfCu\u00e1l es el mejor regalo que has hecho?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "example": "Muy curioso, preguntaba de todo y me encantaba explorar.",
+      "question": "\u00bfC\u00f3mo eras de ni\u00f1@?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "example": "Pasar\u00eda todo mi tiempo con mi familia y amigos, viajando y despidi\u00e9ndome de todos.",
+      "question": "Si hoy te dicen que te queda un mes de vida, \u00bfQu\u00e9 har\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "example": "A pintar y dibujar, es algo que me relaja mucho y lo hago poco.",
+      "question": "\u00bfA qu\u00e9 actividades te gustar\u00eda dedicarle m\u00e1s tiempo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "example": "Soy amarillo, porque me considero optimista y alegre.",
+      "question": "\u00bfQu\u00e9 color eres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "example": "No, eso va contra todos mis principios.",
+      "question": "\u00bfComer\u00edas carne humana?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "example": "S\u00ed, disfruto la mayor\u00eda de las tareas y el ambiente es bueno.",
+      "question": "\u00bfTe gusta tu trabajo/estudios?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "example": "Me encantar\u00eda vivir en una ciudad costera, sentir el mar cerca.",
+      "question": "\u00bfD\u00f3nde te gustar\u00eda vivir?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "example": "Ser barista en una cafeter\u00eda peque\u00f1a y acogedora. Me encanta el caf\u00e9.",
+      "question": "\u00bfA qu\u00e9 empleo no cualificado te gustar\u00eda dedicarte?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "example": "Tal vez solo un poco, pero no todo, para mantener la emoci\u00f3n.",
+      "question": "\u00bfQuerr\u00edas saber tu futuro?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "example": "S\u00ed, me produce cierta angustia lo desconocido, pero intento no obsesionarme.",
+      "question": "\u00bfLe temes a la muerte?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "example": "Un viaje sin fecha de vuelta, un piano de cola y una casa en la monta\u00f1a.",
+      "question": "\u00bfSi pudieras permitirte los 3 caprichos que quisieras, qu\u00e9 querr\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "example": "Lo usar\u00eda, aunque me d\u00e9 miedo la idea de ser 'descompuesto' y recompuesto.",
+      "question": "\u00bfDilema del teletransporte?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "example": "Psicolog\u00eda, me fascina c\u00f3mo funciona la mente humana.",
+      "question": "\u00bfSi volvieras a elegir qu\u00e9 estudiar, qu\u00e9 elegir\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "example": "Prefiero escuchar, me gusta entender a las personas antes de opinar.",
+      "question": "\u00bfPrefieres hablar o escuchar?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "example": "Creo que soy como un gato: independiente y curioso.",
+      "question": "\u00bfQu\u00e9 animal eres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "example": "Prefiero no hablar de cifras exactas, pero me da para vivir c\u00f3modamente.",
+      "question": "\u00bfCu\u00e1nto ganas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "example": "A 'Viva la Vida' de Coldplay, con energ\u00eda positiva y un toque \u00e9pico.",
+      "question": "\u00bfA qu\u00e9 canci\u00f3n suenas ahora mismo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "example": "Fue un amor de la infancia, una compa\u00f1era de clase en primaria.",
+      "question": "\u00bfQui\u00e9n fue la primera persona de la que te enamoraste?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "example": "Unas 10 horas, necesito mi espacio para relajarme y pensar.",
+      "question": "\u00bfCu\u00e1nto tiempo pasas a solas a la semana?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "example": "La honestidad, la empat\u00eda y la responsabilidad son fundamentales para m\u00ed.",
+      "question": "\u00bfCu\u00e1les son tus valores?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 84
+  },
+  {
+    "fields": {
+      "example": "Busco complicidad, respeto y sentido del humor compartido.",
+      "question": "\u00bfQu\u00e9 buscas en una pareja?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 85
+  },
+  {
+    "fields": {
+      "example": "A mi madre, siempre ha estado ah\u00ed para m\u00ed.",
+      "question": "\u00bfQui\u00e9n es la persona a la que m\u00e1s quieres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 86
+  },
+  {
+    "fields": {
+      "example": "Soy muy mani\u00e1tico con el orden en ciertos espacios, me gusta todo perfectamente acomodado.",
+      "question": "\u00bfQu\u00e9 rareza tienes en comparaci\u00f3n con la sociedad?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 87
+  },
+  {
+    "fields": {
+      "example": "Dir\u00eda que la paciencia y la creatividad, me ayudan mucho en el d\u00eda a d\u00eda.",
+      "question": "\u00bfCu\u00e1les son tus mayores virtudes?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 88
+  },
+  {
+    "fields": {
+      "example": "Soy un poco cabezota y me cuesta delegar tareas a otros.",
+      "question": "\u00bfCu\u00e1les son tus mayores defectos?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 89
+  },
+  {
+    "fields": {
+      "example": "Estar en la playa, leyendo y escuchando las olas sin interrupciones.",
+      "question": "\u00bfDescribe una situaci\u00f3n que te d\u00e9 paz?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 90
+  },
+  {
+    "fields": {
+      "example": "Prefiero no entrar en detalles, es algo muy personal.",
+      "question": "\u00bfPrefieres hacer o que te hagan sexo oral?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 91
+  },
+  {
+    "fields": {
+      "example": "Ser\u00eda creativo pero ca\u00f3tico, probablemente nos costar\u00eda organizarnos.",
+      "question": "\u00bfC\u00f3mo ser\u00eda un mundo en el que todo el mundo fuera como t\u00fa?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 92
+  },
+  {
+    "fields": {
+      "example": "Soy como una nuez, algo dura por fuera pero con interior suave.",
+      "question": "\u00bfQu\u00e9 fruto seco eres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 93
+  },
+  {
+    "fields": {
+      "example": "Poder quedar con un amigo al que no ve\u00eda desde hace meses.",
+      "question": "\u00bfQu\u00e9 es lo que te ha hecho m\u00e1s feliz esta semana?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 94
+  },
+  {
+    "fields": {
+      "example": "Trabajando en un proyecto propio y con una familia comenzada.",
+      "question": "\u00bfD\u00f3nde te ves en 5 a\u00f1os?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 95
+  },
+  {
+    "fields": {
+      "example": "Mi graduaci\u00f3n, cuando sent\u00ed todo el apoyo de mi familia y amigos.",
+      "question": "\u00bfCu\u00e1l es tu recuerdo m\u00e1s feliz?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 96
+  },
+  {
+    "fields": {
+      "example": "Entrar\u00eda en la mente de Elon Musk para ver c\u00f3mo planea sus innovaciones.",
+      "question": "Si pudieras entrar en la mente de una persona y buscar lo que quieras, \u00bfqu\u00e9 persona ser\u00eda y qu\u00e9 buscar\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 97
+  },
+  {
+    "fields": {
+      "example": "Lograr mudarme a otra ciudad y comenzar una vida independiente con \u00e9xito.",
+      "question": "\u00bfCu\u00e1l es tu mayor logro?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 98
+  },
+  {
+    "fields": {
+      "example": "Mi capacidad de empatizar y ponerme en el lugar del otro.",
+      "question": "\u00bfQu\u00e9 es lo que m\u00e1s te gusta de ti?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 99
+  },
+  {
+    "fields": {
+      "example": "Me apasiona escribir historias y crear mundos imaginarios.",
+      "question": "\u00bfQu\u00e9 es lo que m\u00e1s te apasiona?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 100
+  },
+  {
+    "fields": {
+      "example": "So\u00f1\u00e9 que pod\u00eda comunicarme con las plantas y me contaban historias del pasado.",
+      "question": "\u00bfCu\u00e1l es el sue\u00f1o m\u00e1s raro que has tenido?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 101
+  },
+  {
+    "fields": {
+      "example": "Le dir\u00eda que no tenga tanto miedo a arriesgar y a equivocarse.",
+      "question": "\u00bfQu\u00e9 consejo le dir\u00edas a tu yo del pasado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 102
+  },
+  {
+    "fields": {
+      "example": "Un viaje sorpresa con mis amigos a la playa por mi cumplea\u00f1os.",
+      "question": "\u00bfCu\u00e1l es el mejor regalo que te han hecho?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 103
+  },
+  {
+    "fields": {
+      "example": "\u201cNunca dejes de aprender\u201d, me ha servido en cada etapa de la vida.",
+      "question": "\u00bfCu\u00e1l es el mejor consejo que te han dado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 104
+  },
+  {
+    "fields": {
+      "example": "No, no podr\u00eda comerme a mi mascota, ser\u00eda muy extra\u00f1o para m\u00ed.",
+      "question": "\u00bfSi te hubieras criado con una vaca de mascota desde peque\u00f1o, y esta se muere de muerte natural, te la comer\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 105
+  },
+  {
+    "fields": {
+      "example": "Gracias por los momentos buenos y lamento los malos. Te deseo lo mejor.",
+      "question": "\u00bfQu\u00e9 le dir\u00edas a tu ex si pudieras?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 106
+  },
+  {
+    "fields": {
+      "example": "Haber comunicado m\u00e1s mis necesidades y no dar por sentado que las entend\u00eda.",
+      "question": "\u00bfQu\u00e9 hubieras hecho de forma distinta en tu \u00faltima relaci\u00f3n?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 107
+  },
+  {
+    "fields": {
+      "example": "Me enfocar\u00eda en pasar tiempo de calidad con mis seres queridos y hacer lo que m\u00e1s amo.",
+      "question": "\u00bfQu\u00e9 har\u00edas si te quedase 1 mes/semana/d\u00eda de vida?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 108
+  },
+  {
+    "fields": {
+      "example": "No, creo que la vida finita le da sentido a las cosas que hacemos.",
+      "question": "\u00bfSi te ofrecieran la inmortalidad, la aceptar\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 109
+  },
+  {
+    "fields": {
+      "example": "Curioso, emp\u00e1tico y perseverante.",
+      "question": "Def\u00ednete en 3 tres palabras",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 110
+  },
+  {
+    "fields": {
+      "example": "Me gustar\u00eda ser menos perfeccionista y aprender a soltar.",
+      "question": "\u00bfCu\u00e1l es el defecto que te gustar\u00eda cambiar aunque sabes que puede que no lo cambies nunca?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 111
+  },
+  {
+    "fields": {
+      "example": "Fui feliz, rodeado de familia y muchos juegos en la calle.",
+      "question": "\u00bfC\u00f3mo fue tu infancia?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 112
+  },
+  {
+    "fields": {
+      "example": "Un oc\u00e9ano con corrientes cambiantes, a veces serenas y a veces intensas.",
+      "question": "\u00bfCon qu\u00e9 imagen describir\u00edas tu mente?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 113
+  },
+  {
+    "fields": {
+      "example": "\u2018No busques la perfecci\u00f3n, busca el progreso\u2019, me ayuda a avanzar d\u00eda a d\u00eda.",
+      "question": "\u00bfCu\u00e1l es el mejor consejo que has escuchado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 114
+  },
+  {
+    "fields": {
+      "example": "Aunque me arrepiento de algunos errores, creo que no los cambiar\u00eda porque aprend\u00ed de ellos.",
+      "question": "\u00bfCambiar\u00edas algo de tu pasado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 115
+  },
+  {
+    "fields": {
+      "example": "Estar rodeado de gente a la que amo, sin preocupaciones y con mucho tiempo para compartir.",
+      "question": "\u00bfC\u00f3mo ser\u00eda una situaci\u00f3n que para ti se parecer\u00eda al cielo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 116
+  },
+  {
+    "fields": {
+      "example": "S\u00ed, pero prefiero no revelarlo porque todav\u00eda no me siento c\u00f3modo para hacerlo.",
+      "question": "\u00bfTienes alg\u00fan secreto que no hayas contado y por qu\u00e9?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 117
+  },
+  {
+    "fields": {
+      "example": "A veces me asusta la idea de no llegar a ser la persona que quiero ser.",
+      "question": "\u00bfHay algo de ti mism@ que te d\u00e9 miedo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 118
+  },
+  {
+    "fields": {
+      "example": "Desviar\u00eda el tranv\u00eda para causar el menor da\u00f1o posible, aunque es una situaci\u00f3n terrible.",
+      "question": "\u00bfDilema del tranv\u00eda?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 119
+  },
+  {
+    "fields": {
+      "example": "La honestidad, sin ella no puede haber confianza real.",
+      "question": "\u00bfQu\u00e9 es lo m\u00e1s importante para ti en una persona?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 120
+  },
+  {
+    "fields": {
+      "example": "No, porque las emociones, aunque a veces duelan, me hacen sentir vivo.",
+      "question": "\u00bfSi pudieras apagarte las emociones con un interruptor, lo har\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 121
+  },
+  {
+    "fields": {
+      "example": "La alegr\u00eda, porque me gusta compartir momentos divertidos con los dem\u00e1s.",
+      "question": "\u00bfCon qu\u00e9 emoci\u00f3n te identificas m\u00e1s que con las dem\u00e1s?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 122
+  },
+  {
+    "fields": {
+      "example": "Rebelde y con muchas ganas de experimentar, pero tambi\u00e9n algo inseguro.",
+      "question": "\u00bfC\u00f3mo eras de adolescente?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 123
+  },
+  {
+    "fields": {
+      "example": "Amo mi libertad y la posibilidad de elegir mi propio camino.",
+      "question": "\u00bfQu\u00e9 es lo que es lo que m\u00e1s amas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 124
+  },
+  {
+    "fields": {
+      "example": "Curioso, inquieto, amable, perseverante y bromista.",
+      "question": "\u00bfCon qu\u00e9 5 adjetivos te describir\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 125
+  },
+  {
+    "fields": {
+      "example": "Prefiero mantenerlo en privado, es algo muy personal.",
+      "question": "\u00bfQu\u00e9 es lo que m\u00e1s te gusta que te hagan en el sexo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 126
+  },
+  {
+    "fields": {
+      "example": "Viajar y conocer lugares nuevos, probar comidas diferentes y aprender de otras culturas.",
+      "question": "\u00bfQu\u00e9 es lo que m\u00e1s te apasiona?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 127
+  },
+  {
+    "fields": {
+      "example": "Quiero mantenerme activo, cuidar mi salud y rodearme de gente positiva.",
+      "question": "\u00bfC\u00f3mo vas a gestionar tu vejez?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 128
+  },
+  {
+    "fields": {
+      "example": "La gratitud, cada d\u00eda valoro m\u00e1s lo que tengo.",
+      "question": "\u00bfCu\u00e1l es el sentimiento que sientes con m\u00e1s profundidad?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 129
+  },
+  {
+    "fields": {
+      "example": "Avisar\u00eda a mi familia m\u00e1s cercana y a mi mejor amigo, para aprovechar el tiempo con ellos.",
+      "question": "Si solo puedes elegir a 5 personas, \u00bfA qui\u00e9nes avisar\u00edas si te diagnostican una enfermedad terminal?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 130
+  },
+  {
+    "fields": {
+      "example": "No, nunca lo har\u00eda, preferir\u00eda sacrificarme antes que quitarle la vida a quien amo.",
+      "question": "\u00bfEstar\u00edas dispuesto a matar a la persona a la que m\u00e1s quieres para salvar tu vida?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 131
+  },
+  {
+    "fields": {
+      "example": "Practico deporte y voluntariado, ambas cosas me dan equilibrio y prop\u00f3sito.",
+      "question": "\u00bfQu\u00e9 haces regularmente que te haga sentir pleno o que la vida tiene sentido?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 132
+  },
+  {
+    "fields": {
+      "example": "Escoger\u00eda el olfato, aunque me costar\u00eda perder ciertos olores que amo.",
+      "question": "\u00bfSi tuvieras que prescindir de un sentido, cu\u00e1l ser\u00eda?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 133
+  },
+  {
+    "fields": {
+      "example": "Quedarme solo o no cumplir con mis metas de vida.",
+      "question": "\u00bfCu\u00e1l es tu mayor miedo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 134
+  },
+  {
+    "fields": {
+      "example": "Un poco m\u00e1s de tiempo libre para dedicarme a mis pasiones.",
+      "question": "\u00bfQu\u00e9 m\u00e1s necesitas para ser feliz?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 135
+  },
+  {
+    "fields": {
+      "example": "Vivir m\u00e1s cerca de mi familia, los veo muy poco.",
+      "question": "\u00bfSi pudieras cambiar algo de tu vida, qu\u00e9 ser\u00eda?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 136
+  },
+  {
+    "fields": {
+      "example": "Hay una brecha, pero voy trabajando poco a poco para acortarla.",
+      "question": "\u00bfQu\u00e9 distancia hay entre c\u00f3mo quieres ser y c\u00f3mo eres?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 137
+  },
+  {
+    "fields": {
+      "example": "De no haber pasado m\u00e1s tiempo con mis abuelos y escuchado sus historias.",
+      "question": "\u00bfQu\u00e9 es de lo que m\u00e1s te arrepentir\u00edas si mueres esta noche?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 138
+  },
+  {
+    "fields": {
+      "example": "Tener un negocio propio que me permita viajar y conocer el mundo.",
+      "question": "\u00bfCu\u00e1l es tu mayor sue\u00f1o?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 139
+  },
+  {
+    "fields": {
+      "example": "Hoy me siento con energ\u00eda y motivado, ha sido un buen d\u00eda.",
+      "question": "\u00bfC\u00f3mo est\u00e1s?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 140
+  },
+  {
+    "fields": {
+      "example": "Intento serlo, me preocupo por los dem\u00e1s y act\u00fao con honestidad.",
+      "question": "\u00bfDir\u00edas que eres buena persona?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 141
+  },
+  {
+    "fields": {
+      "example": "Un 7, todav\u00eda tengo cosas que trabajar en mi autoestima, pero estoy en buen camino.",
+      "question": "\u00bfCu\u00e1nto te quieres del 1 al 10?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 142
+  },
+  {
+    "fields": {
+      "example": "Haber confiado m\u00e1s en m\u00ed mismo cuando era m\u00e1s joven y no dudar tanto.",
+      "question": "Si pudieras cambiar algo de tu historia, \u00bfQu\u00e9 ser\u00eda?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 143
+  },
+  {
+    "fields": {
+      "example": "Algunas promesas que no cumpl\u00ed por miedo o inseguridad.",
+      "question": "\u00bfQu\u00e9 es lo que no te perdonas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 144
+  },
+  {
+    "fields": {
+      "example": "Ser feliz aportando algo positivo al mundo y sinti\u00e9ndome realizado en lo personal y profesional.",
+      "question": "\u00bfCu\u00e1l es tu objetivo en la vida?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 145
+  },
+  {
+    "fields": {
+      "example": "Hace un par de semanas, al ver una pel\u00edcula muy emotiva.",
+      "question": "\u00bfCu\u00e1l es la \u00faltima vez que has llorado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 146
+  },
+  {
+    "fields": {
+      "example": "Mi independencia econ\u00f3mica, trabajar y poder mantenerme por mi cuenta.",
+      "question": "\u00bfQu\u00e9 es lo m\u00e1s importante que has conseguido?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 147
+  },
+  {
+    "fields": {
+      "example": "Quiero mejorar mi liderazgo y mi capacidad para gestionar equipos.",
+      "question": "\u00bfEn qu\u00e9 direcci\u00f3n quieres crecer?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 148
+  },
+  {
+    "fields": {
+      "example": "S\u00ed, aunque siempre hay altibajos, en general me siento satisfecho con mi vida.",
+      "question": "\u00bfEres feliz?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 149
+  },
+  {
+    "fields": {
+      "example": "Cuando falleci\u00f3 un familiar muy cercano, sent\u00ed un vac\u00edo enorme.",
+      "question": "\u00bfCu\u00e1l es el d\u00eda m\u00e1s triste que has vivido?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 150
+  },
+  {
+    "fields": {
+      "example": "La honestidad, siempre me he regido por decir la verdad aunque duela.",
+      "question": "\u00bfCu\u00e1l es el principio moral o m\u00e1xima al que no fallar\u00edas nunca?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 151
+  },
+  {
+    "fields": {
+      "example": "De mi familia y amigos, me han apoyado much\u00edsimo en los malos momentos.",
+      "question": "\u00bfQu\u00e9 es de lo que m\u00e1s agradecid@ te sientes?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 152
+  },
+  {
+    "fields": {
+      "example": "Mis ojeras, siempre se notan incluso cuando duermo bien.",
+      "question": "\u00bfQu\u00e9 es lo que menos te gusta de tu cuerpo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 153
+  },
+  {
+    "fields": {
+      "example": "Para mejorar un poco cada d\u00eda y ayudar a la gente que me rodea.",
+      "question": "\u00bfPara qu\u00e9 vives?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 154
+  },
+  {
+    "fields": {
+      "example": "Le dir\u00eda cu\u00e1nto le quiero y que voy a estar a su lado en todo momento.",
+      "question": "Si ma\u00f1ana te informan de la enfermedad terminal de alguien a quien quieres much\u00edsimo, \u00bfqu\u00e9 le dir\u00edas?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 155
+  },
+  {
+    "fields": {
+      "example": "Quiero escribir un libro y publicarlo, es una meta pendiente.",
+      "question": "\u00bfQu\u00e9 sue\u00f1o te queda por cumplir?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 156
+  },
+  {
+    "fields": {
+      "example": "Como alguien que siempre estuvo ah\u00ed para los dem\u00e1s y aport\u00f3 su granito de arena al mundo.",
+      "question": "\u00bfC\u00f3mo te gustar\u00eda ser recordado?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 157
+  },
+  {
+    "fields": {
+      "example": "Me da miedo mi capacidad de aislarme cuando las cosas no van bien.",
+      "question": "\u00bfQu\u00e9 te da m\u00e1s miedo de ti mismo?",
+      "status": "APPROVED"
+    },
+    "model": "questions.question",
+    "pk": 158
+  }
+]
