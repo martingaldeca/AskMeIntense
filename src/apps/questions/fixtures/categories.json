@@ -1,0 +1,18 @@
+[
+  {
+    "fields": {
+      "description": "Preguntas ideales para conocer en profundidad o de forma superficial a una persona.",
+      "name": "Conocerse"
+    },
+    "model": "questions.category",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "description": "Preguntas picantes para conocerse m\u00e1s... \u00edntimamente...",
+      "name": "Picante"
+    },
+    "model": "questions.category",
+    "pk": 2
+  }
+]

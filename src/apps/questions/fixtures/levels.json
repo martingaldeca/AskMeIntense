@@ -1,0 +1,47 @@
+[
+  {
+    "fields": {
+      "description": "Preguntas sencillas y divertidas para romper el hielo y conocer aspectos b\u00e1sicos de la otra persona.",
+      "name": "Preguntas B\u00e1sicas",
+      "number": 1
+    },
+    "model": "questions.level",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "description": "Preguntas que exploran intereses, preferencias y opiniones personales.",
+      "name": "Preguntas Intermedias",
+      "number": 2
+    },
+    "model": "questions.level",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "description": "Preguntas que profundizan en aspectos personales y emociones.",
+      "name": "Preguntas Personales",
+      "number": 3
+    },
+    "model": "questions.level",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "description": "Preguntas que invitan a reflexionar sobre experiencias pasadas y metas futuras.",
+      "name": "Preguntas Profundas",
+      "number": 4
+    },
+    "model": "questions.level",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "description": "Preguntas que abordan miedos, sue\u00f1os y aspectos m\u00e1s vulnerables.",
+      "name": "Preguntas \u00cdntimas",
+      "number": 5
+    },
+    "model": "questions.level",
+    "pk": 5
+  }
+]
