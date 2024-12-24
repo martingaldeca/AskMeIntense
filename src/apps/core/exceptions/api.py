@@ -66,6 +66,6 @@ class PreconditionFailedException(ApiBaseException):
 
 
 class TooEarlyException(ApiBaseException):
-    status_code = 425
+    status_code = status.HTTP_425_TOO_EARLY
     default_detail = "Too early exception"
     default_code = "too early"
