@@ -1,7 +1,6 @@
+from core.mixins import MultipleFieldLookupMixin
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import OpenApiParameter, extend_schema
-
-from core.mixins import MultipleFieldLookupMixin
 from questions.api.serializers import QuestionSerializer, SimpleQuestionSerializer
 from questions.models import Question
 from rest_framework.generics import ListAPIView, RetrieveAPIView
