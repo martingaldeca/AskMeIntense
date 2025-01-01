@@ -14,17 +14,17 @@ class SimpleQuestionSerializer(UUIDModelSerializerMixin):
         fields = ["uuid", "question", "status", "example", "liked", "disliked", "favorite"]
 
     def is_liked(self, obj: Question):
-        if (request := self.context.get("request")) and (user := request.user):
+        if (request := self.context.get("request")) and (user := request.user) and not user.is_anonymous:
             return user.is_liked_question(obj)
         return False
 
     def is_disliked(self, obj: Question):
-        if (request := self.context.get("request")) and (user := request.user):
+        if (request := self.context.get("request")) and (user := request.user) and not user.is_anonymous:
             return user.is_disliked_question(obj)
         return False
 
     def is_favorite(self, obj: Question):
-        if (request := self.context.get("request")) and (user := request.user):
+        if (request := self.context.get("request")) and (user := request.user) and not user.is_anonymous:
             return user.is_favorite_question(obj)
         return False
 
