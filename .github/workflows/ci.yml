@@ -76,7 +76,7 @@ jobs:
           envFile: '.env-dist'
       - name: Test core
         working-directory: ./src
-        run: poetry run coverage run manage.py test --parallel=4 --failfast
+        run: poetry run coverage run manage.py test
 
   production-deploy:
     if: "github.ref == 'refs/heads/production' || contains(github.event.head_commit.message, 'production-testing-deployment')"
