@@ -38,6 +38,7 @@ pylint = "3.3.2"
 coverage = "7.6.8"
 freezegun = "1.5.1"
 pytz = "2024.2"
+tblib = "3.0.0"
 
 [build-system]
 requires = ["poetry-core"]
