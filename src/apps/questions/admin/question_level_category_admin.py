@@ -12,10 +12,11 @@ class QuestionLevelCategoryAdmin(admin.ModelAdmin):
         "get_question",
         "get_level",
         "get_category",
+        "order",
         "created",
         "modified",
     ]
-    list_filter = ["category", "level"]
+    list_filter = ["category", "level", "order"]
     raw_id_fields = ["question", "level", "category"]
     search_fields = [
         "id",
