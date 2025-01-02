@@ -4,6 +4,14 @@ from core.factories import UserFactory
 from core.models import User
 from django.test import TestCase
 from django.utils.translation import gettext_lazy as _
+from questions.factories import (
+    DislikedQuestionFactory,
+    DislikedQuestionReactionFactory,
+    FavoriteQuestionFactory,
+    FavoriteQuestionReactionFactory,
+    LikedQuestionFactory,
+    LikedQuestionReactionFactory,
+)
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -41,3 +49,48 @@ class UserTestCase(TestCase):
                 auth_provider, expected_message = test_data
                 user: User = UserFactory(auth_provider=auth_provider)
                 self.assertEqual(user.not_valid_login_method_message, expected_message)
+
+    def test_liked_reactions(self):
+        user: User = UserFactory()
+        reaction = LikedQuestionReactionFactory(user=user)
+        self.assertEqual(list(user.liked_reactions), [reaction])
+
+    def test_disliked_reactions(self):
+        user: User = UserFactory()
+        reaction = DislikedQuestionReactionFactory(user=user)
+        self.assertEqual(list(user.disliked_reactions), [reaction])
+
+    def test_favorite_reactions(self):
+        user: User = UserFactory()
+        reaction = FavoriteQuestionReactionFactory(user=user)
+        self.assertEqual(list(user.favorite_reactions), [reaction])
+
+    def test_liked_questions(self):
+        user: User = UserFactory()
+        question = LikedQuestionFactory(add_reaction__user=user)
+        self.assertEqual(list(user.liked_questions), [question])
+
+    def test_disliked_questions(self):
+        user: User = UserFactory()
+        question = DislikedQuestionFactory(add_reaction__user=user)
+        self.assertEqual(list(user.disliked_questions), [question])
+
+    def test_favorite_questions(self):
+        user: User = UserFactory()
+        question = FavoriteQuestionFactory(add_reaction__user=user)
+        self.assertEqual(list(user.favorite_questions), [question])
+
+    def test_is_liked_question(self):
+        user: User = UserFactory()
+        question = LikedQuestionFactory(add_reaction__user=user)
+        self.assertTrue(user.is_liked_question(question))
+
+    def test_is_disliked_question(self):
+        user: User = UserFactory()
+        question = DislikedQuestionFactory(add_reaction__user=user)
+        self.assertTrue(user.is_disliked_question(question))
+
+    def test_is_favorite_question(self):
+        user: User = UserFactory()
+        question = FavoriteQuestionFactory(add_reaction__user=user)
+        self.assertTrue(user.is_favorite_question(question))

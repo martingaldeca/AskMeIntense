@@ -17,9 +17,9 @@ class MultipleFieldLookupMixin:
             lookup = lookup_url_kwarg if lookup_url_kwarg else lookup_field
 
             assert lookup in self.kwargs, (
-                "Expected view %s to be called with a URL keyword argument "
-                'named "%s". Fix your URL conf, or set the `.lookup_field` '
-                "attribute on the view correctly." % (self.__class__.__name__, lookup)
+                f"Expected view {self.__class__.__name__} to be called with a URL keyword argument "
+                f'named "{lookup}". Fix your URL conf, or set the `.lookup_field` '
+                "attribute on the view correctly."
             )
 
             filter_kwargs[lookup_field] = self.kwargs[lookup]

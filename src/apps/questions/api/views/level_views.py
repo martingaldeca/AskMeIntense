@@ -9,6 +9,6 @@ from rest_framework.permissions import AllowAny
     tags=["questions"],
 )
 class LevelListView(ListAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     queryset = Level.objects.all().order_by("number")
     serializer_class = LevelSerializer

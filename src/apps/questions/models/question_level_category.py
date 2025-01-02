@@ -36,6 +36,9 @@ class QuestionLevelCategory(TimeStampedUUIDModel):
         related_query_name="questions_and_levels",
         db_index=True,
     )
+    order = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name=_("Order"), help_text=_("Order of the question in the level and category.")
+    )
 
     class Meta:
         verbose_name = _("Question level category")

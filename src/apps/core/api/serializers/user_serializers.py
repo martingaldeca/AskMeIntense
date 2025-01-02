@@ -3,6 +3,7 @@ import logging
 import django.contrib.auth.password_validation as validators
 from core.helpers import UUIDModelSerializerMixin
 from core.models import User
+from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
@@ -28,7 +29,7 @@ class MeSerializer(SimpleUserSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True, help_text=_("Password of the user"))
 
     class Meta:
         model = User

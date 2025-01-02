@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
     tags=["token"],
 )
 class RegisterView(CreateAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     serializer_class = RegisterSerializer
 
 
@@ -16,7 +16,7 @@ class RegisterView(CreateAPIView):
     tags=["users"],
 )
 class MeDetailView(RetrieveAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsAuthenticated]
     serializer_class = MeSerializer
 
     def get_object(self):

@@ -18,6 +18,7 @@ JET_SIDE_MENU_ITEMS = [
             {"name": "answer"},
             {"name": "questionlevelcategory"},
             {"name": "questionproposal"},
+            {"name": "questionreaction"},
         ],
     },
     {

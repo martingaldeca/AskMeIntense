@@ -69,3 +69,42 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
                 return _("Please continue your login using email and password login")
             case self.AuthProviders.GOOGLE_PROVIDER:
                 return _("Please continue your login using google login")
+
+    @property
+    def liked_reactions(self):
+        return self.reactions.liked
+
+    @property
+    def disliked_reactions(self):
+        return self.reactions.disliked
+
+    @property
+    def favorite_reactions(self):
+        return self.reactions.favorite
+
+    @property
+    def liked_questions(self):
+        from questions.models import Question
+
+        return Question.objects.filter(id__in=self.liked_reactions.values_list("question", flat=True))
+
+    @property
+    def disliked_questions(self):
+        from questions.models import Question
+
+        return Question.objects.filter(id__in=self.disliked_reactions.values_list("question", flat=True))
+
+    @property
+    def favorite_questions(self):
+        from questions.models import Question
+
+        return Question.objects.filter(id__in=self.favorite_reactions.values_list("question", flat=True))
+
+    def is_liked_question(self, question):
+        return question in self.liked_questions
+
+    def is_disliked_question(self, question):
+        return question in self.disliked_questions
+
+    def is_favorite_question(self, question):
+        return question in self.favorite_questions

@@ -5,4 +5,5 @@ from . import (
     question_admin,
     question_level_category_admin,
     question_proposal_admin,
+    question_reaction_admin,
 )
