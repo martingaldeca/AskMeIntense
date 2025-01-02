@@ -9,6 +9,6 @@ from rest_framework.permissions import AllowAny
     tags=["questions"],
 )
 class CategoryListView(ListAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     queryset = Category.objects.all()
     serializer_class = CategorySerializer

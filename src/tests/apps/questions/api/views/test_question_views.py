@@ -3,8 +3,13 @@ import uuid
 from core.api.api_test_helpers import APITestBase
 from django.urls import reverse
 from questions.api.serializers import QuestionSerializer, SimpleQuestionSerializer
-from questions.factories import ApprovedQuestionFactory
-from questions.models import Question
+from questions.factories import (
+    ApprovedQuestionFactory,
+    DislikedQuestionFactory,
+    FavoriteQuestionFactory,
+    LikedQuestionFactory,
+)
+from questions.models import Question, QuestionReaction
 from rest_framework import status
 
 
@@ -90,3 +95,87 @@ class RandomQuestionViewTestCase(APITestBase):
                 for instance in [self.question_1, self.question_2, self.question_3]
             ],
         )
+
+
+class ReactToQuestionViewTestCase(APITestBase):
+    url = reverse("questions:question_react", kwargs={"uuid": None})
+
+    def test_question_react_like_201_created(self):
+        question: Question = ApprovedQuestionFactory()
+        self.assertFalse(self.user.is_liked_question(question))
+        self.url = reverse("questions:question_react", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.LIKE})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(self.user.is_liked_question(question))
+
+    def test_question_react_dislike_201_created(self):
+        question: Question = ApprovedQuestionFactory()
+        self.assertFalse(self.user.is_disliked_question(question))
+        self.url = reverse("questions:question_react", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.DISLIKE})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(self.user.is_disliked_question(question))
+
+    def test_question_react_favorite_201_created(self):
+        question: Question = ApprovedQuestionFactory()
+        self.assertFalse(self.user.is_favorite_question(question))
+        self.url = reverse("questions:question_react", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.FAVORITE})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(self.user.is_favorite_question(question))
+
+    def test_question_react_invalid_reaction_400_bad_request(self):
+        question: Question = ApprovedQuestionFactory()
+        self.assertFalse(self.user.is_liked_question(question))
+        self.url = reverse("questions:question_react", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": "not_valid_reaction"})
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.json(), {"reaction": ['"not_valid_reaction" no es una elección válida.']})
+
+    def test_question_react_like_remove_unlike_201_created(self):
+        question: Question = DislikedQuestionFactory(add_reaction__user=self.user)
+        self.assertTrue(self.user.is_disliked_question(question))
+        self.assertFalse(self.user.is_liked_question(question))
+        self.url = reverse("questions:question_react", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.LIKE})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertFalse(self.user.is_disliked_question(question))
+        self.assertTrue(self.user.is_liked_question(question))
+
+    def test_question_react_dislike_remove_like_201_created(self):
+        question: Question = LikedQuestionFactory(add_reaction__user=self.user)
+        self.assertTrue(self.user.is_liked_question(question))
+        self.assertFalse(self.user.is_disliked_question(question))
+        self.url = reverse("questions:question_react", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.DISLIKE})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertFalse(self.user.is_liked_question(question))
+        self.assertTrue(self.user.is_disliked_question(question))
+
+
+class RemoveReactionViewTestCase(APITestBase):
+    url = reverse("questions:question_remove_reaction", kwargs={"uuid": None})
+
+    def test_question_remove_reaction_like_202_accepted(self):
+        question: Question = LikedQuestionFactory(add_reaction__user=self.user)
+        self.assertTrue(self.user.is_liked_question(question))
+        self.url = reverse("questions:question_remove_reaction", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.LIKE})
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertFalse(self.user.is_liked_question(question))
+
+    def test_question_remove_reaction_dislike_202_accepted(self):
+        question: Question = DislikedQuestionFactory(add_reaction__user=self.user)
+        self.assertTrue(self.user.is_disliked_question(question))
+        self.url = reverse("questions:question_remove_reaction", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.DISLIKE})
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertFalse(self.user.is_disliked_question(question))
+
+    def test_question_remove_reaction_favorite_202_accepted(self):
+        question: Question = FavoriteQuestionFactory(add_reaction__user=self.user)
+        self.assertTrue(self.user.is_favorite_question(question))
+        self.url = reverse("questions:question_remove_reaction", kwargs={"uuid": question.uuid.hex})
+        response = self.client.post(self.url, data={"reaction": QuestionReaction.ReactionChoices.FAVORITE})
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+        self.assertFalse(self.user.is_favorite_question(question))

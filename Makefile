@@ -53,7 +53,7 @@ make-migrations:
 migrate:
 	$s docker exec -it ${PROJECT_NAME}_backend python manage.py migrate $(ARGS)
 
-migrations: make-messages migrate
+migrations: make-migrations migrate
 
 install-test-dependencies:
 	$s docker exec ${PROJECT_NAME}_backend poetry install --with test
@@ -62,7 +62,7 @@ test: install-test-dependencies
 	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --keepdb
 
 fast-test:
-	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --failfast
+	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --keepdb --failfast
 
 report:
 	$s docker exec ${PROJECT_NAME}_backend coverage html
