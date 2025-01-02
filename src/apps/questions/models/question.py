@@ -62,3 +62,57 @@ class Question(TimeStampedUUIDModel):
             category=category,
             level=level,
         )
+
+    def _react(self, reaction, user):
+        from questions.models import QuestionReaction
+
+        if reaction not in QuestionReaction.ReactionChoices.values:
+            raise ValueError("Reaction not valid")
+        QuestionReaction.objects.create(
+            question=self,
+            reaction=reaction,
+            user=user,
+        )
+
+    def react_like(self, user):
+        from questions.models import QuestionReaction
+
+        self._remove_reaction(QuestionReaction.ReactionChoices.DISLIKE, user)
+        self._react(QuestionReaction.ReactionChoices.LIKE, user)
+
+    def react_dislike(self, user):
+        from questions.models import QuestionReaction
+
+        self._remove_reaction(QuestionReaction.ReactionChoices.LIKE, user)
+        self._react(QuestionReaction.ReactionChoices.DISLIKE, user)
+
+    def react_favorite(self, user):
+        from questions.models import QuestionReaction
+
+        self._react(QuestionReaction.ReactionChoices.FAVORITE, user)
+
+    def _remove_reaction(self, reaction, user):
+        from questions.models import QuestionReaction
+
+        if reaction not in QuestionReaction.ReactionChoices.values:
+            raise ValueError("Reaction not valid")
+        self.reactions.filter(
+            question=self,
+            user=user,
+            reaction=reaction,
+        ).delete()
+
+    def remove_like(self, user):
+        from questions.models import QuestionReaction
+
+        self._remove_reaction(QuestionReaction.ReactionChoices.LIKE, user)
+
+    def remove_dislike(self, user):
+        from questions.models import QuestionReaction
+
+        self._remove_reaction(QuestionReaction.ReactionChoices.DISLIKE, user)
+
+    def remove_favorite(self, user):
+        from questions.models import QuestionReaction
+
+        self._remove_reaction(QuestionReaction.ReactionChoices.FAVORITE, user)

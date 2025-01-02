@@ -21,6 +21,8 @@ class QuestionReaction(TimeStampedUUIDModel):
         verbose_name=_("Question"),
         help_text=_("Question the user has reacted to."),
         db_index=True,
+        related_name="reactions",
+        related_query_name="reactions",
     )
     user = models.ForeignKey(
         User,
@@ -43,3 +45,4 @@ class QuestionReaction(TimeStampedUUIDModel):
     class Meta:
         verbose_name = _("Question reaction")
         verbose_name_plural = _("Question reactions")
+        unique_together = [["question", "user", "reaction"]]

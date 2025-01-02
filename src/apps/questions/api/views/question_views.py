@@ -1,10 +1,16 @@
 from core.mixins import MultipleFieldLookupMixin
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import OpenApiParameter, extend_schema
-from questions.api.serializers import QuestionSerializer, SimpleQuestionSerializer
-from questions.models import Question
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.permissions import AllowAny
+from questions.api.serializers import (
+    AddOrRemoveInputReactionRequestSerializer,
+    AddOrRemoveReactionSerializer,
+    QuestionSerializer,
+    SimpleQuestionSerializer,
+)
+from questions.models import Question, QuestionReaction
+from rest_framework import status
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 @extend_schema(
@@ -15,7 +21,7 @@ from rest_framework.permissions import AllowAny
     ],
 )
 class QuestionListView(ListAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     serializer_class = QuestionSerializer
 
     def get_queryset(self):
@@ -31,9 +37,56 @@ class QuestionListView(ListAPIView):
 
 @extend_schema(tags=["questions"])
 class RandomQuestionGetView(MultipleFieldLookupMixin, RetrieveAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     serializer_class = SimpleQuestionSerializer
     queryset = Question.objects.approved.all()
     lookup_fields = ["categories__uuid", "levels__uuid"]
     lookup_url_kwargs = ["category", "level"]
     random_result_from_list = True
+
+
+@extend_schema(
+    request=AddOrRemoveInputReactionRequestSerializer,
+    responses=AddOrRemoveReactionSerializer,
+)
+class ReactToQuestionView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AddOrRemoveReactionSerializer
+
+    def perform_create(self, serializer):
+        serializer.instance = get_object_or_404(Question, uuid=self.kwargs["uuid"])
+        reaction = serializer.validated_data["reaction"]
+        user = self.request.user
+
+        if reaction == QuestionReaction.ReactionChoices.LIKE:
+            serializer.instance.react_like(user)
+        elif reaction == QuestionReaction.ReactionChoices.DISLIKE:
+            serializer.instance.react_dislike(user)
+        else:  # reaction == QuestionReaction.ReactionChoices.FAVORITE:
+            serializer.instance.react_favorite(user)
+
+
+@extend_schema(
+    request=AddOrRemoveInputReactionRequestSerializer,
+    responses=AddOrRemoveReactionSerializer,
+)
+class RemoveReactionView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AddOrRemoveReactionSerializer
+
+    def perform_create(self, serializer):
+        serializer.instance = get_object_or_404(Question, uuid=self.kwargs["uuid"])
+        reaction = serializer.validated_data["reaction"]
+        user = self.request.user
+
+        if reaction == QuestionReaction.ReactionChoices.LIKE:
+            serializer.instance.remove_like(user)
+        elif reaction == QuestionReaction.ReactionChoices.DISLIKE:
+            serializer.instance.remove_dislike(user)
+        else:  # reaction == QuestionReaction.ReactionChoices.FAVORITE:
+            serializer.instance.remove_favorite(user)
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        response.status_code = status.HTTP_202_ACCEPTED
+        return response

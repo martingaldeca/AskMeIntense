@@ -53,7 +53,7 @@ make-migrations:
 migrate:
 	$s docker exec -it ${PROJECT_NAME}_backend python manage.py migrate $(ARGS)
 
-migrations: make-messages migrate
+migrations: make-migrations migrate
 
 install-test-dependencies:
 	$s docker exec ${PROJECT_NAME}_backend poetry install --with test

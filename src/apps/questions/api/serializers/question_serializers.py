@@ -1,7 +1,7 @@
 from core.helpers import UUIDModelSerializerMixin
 from django.utils.translation import gettext_lazy as _
 from questions.api.serializers import CategorySerializer, LevelSerializer
-from questions.models import Question
+from questions.models import Question, QuestionReaction
 from rest_framework import serializers
 
 
@@ -41,3 +41,21 @@ class QuestionSerializer(SimpleQuestionSerializer):
     class Meta:
         model = Question
         fields = ["uuid", "question", "status", "example", "categories", "levels", "liked", "disliked", "favorite"]
+
+
+class AddOrRemoveInputReactionRequestSerializer(serializers.Serializer):
+    reaction = serializers.ChoiceField(
+        choices=QuestionReaction.ReactionChoices.values,
+        required=True,
+        help_text=_("Reaction to add or remove"),
+        write_only=True,
+    )
+
+
+class AddOrRemoveReactionSerializer(AddOrRemoveInputReactionRequestSerializer, SimpleQuestionSerializer):
+    uuid = serializers.UUIDField(format="hex", read_only=True, help_text=_("UUID of the question"))
+    question = serializers.CharField(max_length=255, read_only=True, help_text=_("Question"))
+
+    class Meta:
+        model = Question
+        fields = ["uuid", "question", "status", "example", "liked", "disliked", "favorite", "reaction"]

@@ -369,3 +369,7 @@ if not PRODUCTION:
 
 if len(sys.argv) > 1 and sys.argv[1] == "test":
     logging.disable(logging.CRITICAL)
+
+# Constants
+ADMIN_SHORT_TEXT_LENGTH = 25
+MAX_LEVEL_ALLOWED = 5

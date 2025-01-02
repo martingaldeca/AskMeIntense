@@ -1,7 +1,13 @@
 from core.api.api_test_helpers import SerializerTestBase
-from questions.api.serializers import CategorySerializer, LevelSerializer, QuestionSerializer, SimpleQuestionSerializer
+from questions.api.serializers import (
+    AddOrRemoveReactionSerializer,
+    CategorySerializer,
+    LevelSerializer,
+    QuestionSerializer,
+    SimpleQuestionSerializer,
+)
 from questions.factories import DislikedQuestionFactory, FavoriteQuestionFactory, LikedQuestionFactory, QuestionFactory
-from questions.models import Question
+from questions.models import Question, QuestionReaction
 
 
 class SimpleQuestionSerializerTestCase(SerializerTestBase):
@@ -55,3 +61,28 @@ class QuestionSerializerTestCase(SerializerTestBase):
             "favorite": False,
         }
         self.assertEqual(QuestionSerializer(question, context=self.context).data, expected_data)
+
+
+class AddOrRemoveReactionSerializerTestCase(SerializerTestBase):
+    def test_data(self):
+        question: Question = QuestionFactory()
+        expected_data = {
+            "uuid": question.uuid.hex,
+            "question": question.question,
+            "status": question.status,
+            "example": question.example,
+            "liked": False,
+            "disliked": False,
+            "favorite": False,
+        }
+        self.assertEqual(AddOrRemoveReactionSerializer(question, context=self.context).data, expected_data)
+
+    def test_data_validation_valid(self):
+        serializer = AddOrRemoveReactionSerializer(
+            data={"reaction": QuestionReaction.ReactionChoices.LIKE}, context=self.context
+        )
+        self.assertTrue(serializer.is_valid())
+
+    def test_data_validation_invalid(self):
+        serializer = AddOrRemoveReactionSerializer(data={"reaction": "not_valid_reaction"}, context=self.context)
+        self.assertFalse(serializer.is_valid())
