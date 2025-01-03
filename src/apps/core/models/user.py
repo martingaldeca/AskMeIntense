@@ -15,6 +15,17 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
         EMAIL_PROVIDER = ["email", _("Email")]
         GOOGLE_PROVIDER = ["google", _("Google")]
 
+    class Avatars(models.TextChoices):
+        BLACK = ["black", _("Black")]
+        WHITE = ["white", _("White")]
+        ORANGE = ["orange", _("Orange")]
+        BLUE = ["blue", _("Blue")]
+        PURPLE = ["purple", _("Purple")]
+        RED = ["red", _("Red")]
+        GREEN = ["green", _("Green")]
+        PINK = ["pink", _("Pink")]
+        YELLOW = ["yellow", _("Yellow")]
+
     username = None
     email = models.EmailField(
         max_length=255,
@@ -37,6 +48,13 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
         default="https://pbs.twimg.com/media/ChDbQ2DWgAA7LGx.jpg",
         verbose_name=_("Picture URL"),
         help_text=_("Url of the picture profile. When auth login it will come from there."),
+    )
+    avatar = models.CharField(
+        choices=Avatars,
+        default=Avatars.GREEN,
+        max_length=255,
+        verbose_name=_("Avatar name"),
+        help_text=_("Name of the avatar. It will be obtained from the frontend statics."),
     )
     auth_provider = models.CharField(max_length=255, choices=AuthProviders, default=AuthProviders.EMAIL_PROVIDER)
 
