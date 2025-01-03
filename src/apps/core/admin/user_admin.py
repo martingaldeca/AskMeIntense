@@ -15,6 +15,7 @@ class AskMeIntenseUserAdmin(UserAdmin):
                     "first_name",
                     "last_name",
                     "birthdate",
+                    "avatar",
                 )
             },
         ),
@@ -52,6 +53,7 @@ class AskMeIntenseUserAdmin(UserAdmin):
         "email",
         "first_name",
         "last_name",
+        "avatar",
         "is_staff",
         "is_verified",
         "auth_provider",
@@ -61,6 +63,7 @@ class AskMeIntenseUserAdmin(UserAdmin):
         "is_superuser",
         "is_active",
         "groups",
+        "avatar",
     ]
     search_fields = ["first_name", "last_name", "email", "id", "uuid"]
     readonly_fields = ["date_joined", "last_login", "uuid", "id", "created", "modified"]
