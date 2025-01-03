@@ -64,3 +64,24 @@ class MeDetailViewTestCase(APITestBase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(response.data["detail"].code, "not_authenticated")
+
+    def test_patch_me_detail_200_ok(self):
+        data_to_patch = {
+            "first_name": "new_first_name",
+            "last_name": "new_last_name",
+            "email": "foo@foo.com",
+            "birthdate": "1994-08-08",
+            "avatar": "blue",
+        }
+        response = self.client.patch(self.url, data=data_to_patch)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.user.refresh_from_db()
+        for key, value in data_to_patch.items():
+            self.assertEqual(str(getattr(self.user, key)), value)
+
+    def test_patch_me_detail_not_valid_email_400_bad_request(self):
+        data_to_patch = {
+            "email": "not_valid_email",
+        }
+        response = self.client.patch(self.url, data=data_to_patch)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

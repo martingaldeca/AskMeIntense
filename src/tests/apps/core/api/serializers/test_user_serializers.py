@@ -15,6 +15,7 @@ class SimpleUserSerializerTestCase(SerializerTestBase):
             "email": user.email,
             "first_name": user.first_name,
             "last_name": user.last_name,
+            "avatar": user.avatar,
         }
         self.assertEqual(SimpleUserSerializer(user).data, expected_data)
 
@@ -28,6 +29,7 @@ class MeSerializerTestCase(SerializerTestBase):
             "last_name": user.last_name,
             "email": user.email,
             "birthdate": user.birthdate.isoformat(),
+            "avatar": user.avatar,
         }
         self.assertEqual(MeSerializer(user).data, expected_data)
 
