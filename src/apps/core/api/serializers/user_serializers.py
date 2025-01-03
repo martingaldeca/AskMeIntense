@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class SimpleUserSerializer(UUIDModelSerializerMixin):
     class Meta:
         model = User
-        fields = ["uuid", "email", "first_name", "last_name"]
+        fields = ["uuid", "email", "first_name", "last_name", "avatar"]
 
 
 class MeSerializer(SimpleUserSerializer):
@@ -21,9 +21,10 @@ class MeSerializer(SimpleUserSerializer):
         model = User
         fields = [
             "uuid",
+            "email",
             "first_name",
             "last_name",
-            "email",
+            "avatar",
             "birthdate",
         ]
 
