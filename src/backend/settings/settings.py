@@ -5,6 +5,7 @@ from datetime import timedelta
 from os.path import abspath, dirname, join
 
 import factory
+from corsheaders.defaults import default_headers
 from django.contrib.admin import ModelAdmin
 from django.utils import timezone
 from IPython.terminal.interactiveshell import TerminalInteractiveShell
@@ -69,6 +70,7 @@ EXTERNAL_LIBRARIES = [
     "corsheaders",
     "drf_api_logger",
     "drf_spectacular",
+    "waffle",
     "rest_framework_simplejwt",
     "axes",
 ]
@@ -99,6 +101,8 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "simple_history.middleware.HistoryRequestMiddleware",
     "drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware",
+    "waffle.middleware.WaffleMiddleware",
+    "core.middleware.minimum_version_required.MinimumVersionRequired",
     "axes.middleware.AxesMiddleware",  # Should be the last for axes to render lockout messages
 ]
 
@@ -333,6 +337,12 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
 ]
 
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "AppVersion",
+]
+WAFFLE_CREATE_MISSING_SWITCHES = True
+
+
 AXES_ENABLED = True
 AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = timedelta(minutes=30)  # Period of inactivity to clear failed attempts
@@ -373,3 +383,4 @@ if len(sys.argv) > 1 and sys.argv[1] == "test":
 # Constants
 ADMIN_SHORT_TEXT_LENGTH = 25
 MAX_LEVEL_ALLOWED = 5
+MINIMUM_REQUIRED_APP_VERSION_ANDROID = env.get("MINIMUM_REQUIRED_APP_VERSION_ANDROID", "0.0.0")
