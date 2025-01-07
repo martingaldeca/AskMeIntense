@@ -13,4 +13,5 @@ def get_admin_reference(obj):
 
 
 def get_admin_image(obj, picture_field: str, size: int = 200):
-    return format_html(f'<img src="{getattr(obj, picture_field).url}" width="auto" height="{size}px" />')
+    if getattr(obj, picture_field):
+        return format_html(f'<img src="{getattr(obj, picture_field).url}" width="auto" height="{size}px" />')
