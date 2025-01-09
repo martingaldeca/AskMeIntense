@@ -45,6 +45,15 @@ class RandomQuestionGetView(MultipleFieldLookupMixin, RetrieveAPIView):
     random_result_from_list = True
 
 
+@extend_schema(tags=["questions"])
+class FavoriteQuestionListView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuestionSerializer
+
+    def get_queryset(self):
+        return self.request.user.favorite_questions.order_by("levels__number")
+
+
 @extend_schema(
     request=AddOrRemoveInputReactionRequestSerializer,
     responses=AddOrRemoveReactionSerializer,

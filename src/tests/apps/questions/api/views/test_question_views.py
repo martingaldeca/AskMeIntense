@@ -1,6 +1,6 @@
 import uuid
 
-from core.api.api_test_helpers import APITestBase
+from core.api.api_test_helpers import APITestBase, APITestBaseNeedAuthorized
 from django.urls import reverse
 from questions.api.serializers import QuestionSerializer, SimpleQuestionSerializer
 from questions.factories import (
@@ -60,6 +60,33 @@ class QuestionListViewTestCase(APITestBase):
             self.assertEqual(response.data["count"], total_count)
 
 
+class FavoriteQuestionListViewTestCase(APITestBaseNeedAuthorized):
+    url = reverse("questions:favorite_questions")
+
+    def setUp(self):
+        super().setUp()
+        self.question: Question = FavoriteQuestionFactory(add_reaction__user=self.user)
+        self.not_favorite_question: Question = ApprovedQuestionFactory()
+
+
+def test_get_questions_list_200_ok(self):
+    response = self.client.get(self.url)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.assertEqual(
+        response.data["results"],
+        QuestionSerializer(
+            instance=[
+                self.question,
+            ],
+            many=True,
+            context={"request": self.request},
+        ).data,
+    )
+    self.assertEqual(response.data["count"], 1)
+    self.assertIsNone(response.data["next"])
+    self.assertIsNone(response.data["previous"])
+
+
 class RandomQuestionViewTestCase(APITestBase):
     url = reverse("questions:random_question", kwargs={"level": None, "category": None})
 
@@ -97,7 +124,7 @@ class RandomQuestionViewTestCase(APITestBase):
         )
 
 
-class ReactToQuestionViewTestCase(APITestBase):
+class ReactToQuestionViewTestCase(APITestBaseNeedAuthorized):
     url = reverse("questions:question_react", kwargs={"uuid": None})
 
     def test_question_react_like_201_created(self):
@@ -153,7 +180,7 @@ class ReactToQuestionViewTestCase(APITestBase):
         self.assertTrue(self.user.is_disliked_question(question))
 
 
-class RemoveReactionViewTestCase(APITestBase):
+class RemoveReactionViewTestCase(APITestBaseNeedAuthorized):
     url = reverse("questions:question_remove_reaction", kwargs={"uuid": None})
 
     def test_question_remove_reaction_like_202_accepted(self):
