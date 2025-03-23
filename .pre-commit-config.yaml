@@ -21,6 +21,7 @@ repos:
       - id: name-tests-test
         args:
           - --pytest-test-first
+        exclude: '.*helpers.*'
       - id: pretty-format-json
         args:
           - --autofix

@@ -1,3 +1,4 @@
+#!/bin/bash
 NOCOLOR='\001\033[0m\002'
 
 RED='\001\033[00;31m\002'
@@ -10,6 +11,9 @@ ENVIRONMENT=${ENVIRONMENT:-unknown}
 case ${ENVIRONMENT} in
   "prod"|"pro"|"production")
     ENV_COLOR="$RED"
+    ;;
+  "dev/development")
+    ENV_COLOR="$GREEN"
     ;;
   "local")
     ENV_COLOR="$BLUE"

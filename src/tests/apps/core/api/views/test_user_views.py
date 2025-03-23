@@ -10,7 +10,7 @@ class RegisterViewTestCase(APITestBase):
     url = reverse("core:register")
 
     def setUp(self):
-        super(RegisterViewTestCase, self).setUp()
+        super().setUp()
         self.sent_data = {
             "email": "foo@foo.com",
             "password": "ThisIsARealValidPassword",
@@ -46,7 +46,9 @@ class RegisterViewTestCase(APITestBase):
         for test_data in test_data_list:
             with self.subTest(test_data=test_data):
                 email, password, detail_key, expected_code = test_data
-                response = self.client.post(self.url, data={"email": email, "password": password})
+                response = self.client.post(
+                    self.url, data={"email": email, "password": password}
+                )
                 self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
                 self.assertEqual(response.data[detail_key][0].code, expected_code)
 

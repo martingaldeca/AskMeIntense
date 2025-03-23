@@ -18,7 +18,9 @@ class Question(TimeStampedUUIDModel):
 
     question = models.TextField(
         verbose_name=_("Question"),
-        help_text=_("Question text, this is the main question that will appear to the asker"),
+        help_text=_(
+            "Question text, this is the main question that will appear to the asker"
+        ),
     )
     status = models.CharField(
         max_length=255,
@@ -33,8 +35,12 @@ class Question(TimeStampedUUIDModel):
         verbose_name=_("Example"),
         help_text=_("Example of one valid answer for the question"),
     )
-    categories = models.ManyToManyField(Category, through="QuestionLevelCategory", verbose_name=_("Categories"))
-    levels = models.ManyToManyField(Level, through="QuestionLevelCategory", verbose_name=_("Levels"))
+    categories = models.ManyToManyField(
+        Category, through="QuestionLevelCategory", verbose_name=_("Categories")
+    )
+    levels = models.ManyToManyField(
+        Level, through="QuestionLevelCategory", verbose_name=_("Levels")
+    )
 
     objects = CustomQuestionManager()
 

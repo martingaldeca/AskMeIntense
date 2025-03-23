@@ -32,14 +32,18 @@ class QuestionTestCase(TestCase):
     def test_approve_not_valid_status(self):
         factories_to_use = [ApprovedQuestionFactory, DeniedQuestionFactory]
         for factory_to_use in factories_to_use:
-            with self.subTest(factory_to_use=factory_to_use), self.assertRaises(NotValidQuestionStatusForApproveOrDeny):
+            with self.subTest(factory_to_use=factory_to_use), self.assertRaises(
+                NotValidQuestionStatusForApproveOrDeny
+            ):
                 question = factory_to_use()
                 question.approve()
 
     def test_deny_not_valid_status(self):
         factories_to_use = [ApprovedQuestionFactory, DeniedQuestionFactory]
         for factory_to_use in factories_to_use:
-            with self.subTest(factory_to_use=factory_to_use), self.assertRaises(NotValidQuestionStatusForApproveOrDeny):
+            with self.subTest(factory_to_use=factory_to_use), self.assertRaises(
+                NotValidQuestionStatusForApproveOrDeny
+            ):
                 question = factory_to_use()
                 question.deny()
 

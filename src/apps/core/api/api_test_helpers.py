@@ -23,7 +23,9 @@ class APITestBase(APITestCase):
             self.skipTest("URL must be defined in subclasses.")
         self.user: User = VerifiedUserFactory(password="root1234")
         self.client.login(email=self.user.email, password="root1234")
-        response = self.client.post(reverse("login"), {"email": self.user.email, "password": "root1234"})
+        response = self.client.post(
+            reverse("login"), {"email": self.user.email, "password": "root1234"}
+        )
         token = response.data["access"]
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {token}")
         self.request = APIRequestFactory().get(self.url)

@@ -12,7 +12,10 @@ class BackendPrompt(Prompts):
         return [
             (
                 Token.Env,
-                (f'{env.get("PROJECT_NAME", "NONE")}_backend_' f'{env.get("ENVIRONMENT", "UNKNOWN")} '),
+                (
+                    f'{env.get("PROJECT_NAME", "NONE")}_backend_'
+                    f'{env.get("ENVIRONMENT", "UNKNOWN")} '
+                ),
             )
         ] + super().in_prompt_tokens()
 

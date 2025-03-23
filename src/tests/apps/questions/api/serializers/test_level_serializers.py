@@ -13,4 +13,6 @@ class LevelSerializerTestCase(SerializerTestBase):
             "description": level.description,
             "number": level.number,
         }
-        self.assertEqual(LevelSerializer(level, context=self.context).data, expected_data)
+        self.assertEqual(
+            LevelSerializer(level, context=self.context).data, expected_data
+        )

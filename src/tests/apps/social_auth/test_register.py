@@ -25,11 +25,17 @@ class TestRegisterSocialUser(TestCase):
             ],
         ]
         for test_data in test_data_list:
-            with self.subTest(test_data=test_data), self.assertRaises(AuthenticationFailed) as expected_exception:
+            with self.subTest(test_data=test_data), self.assertRaises(
+                AuthenticationFailed
+            ) as expected_exception:
                 previous_provider, used_provider, expected_exception_message = test_data
                 user: User = VerifiedUserFactory(auth_provider=previous_provider)
-                RegisterSocialUser.authenticate_or_register(provider=used_provider, user_data={"email": user.email})
-            self.assertEqual(str(expected_exception.exception.detail), expected_exception_message)
+                RegisterSocialUser.authenticate_or_register(
+                    provider=used_provider, user_data={"email": user.email}
+                )
+            self.assertEqual(
+                str(expected_exception.exception.detail), expected_exception_message
+            )
 
     @patch("social_auth.register.authenticate")
     def test_create_user(self, mock_authenticate):
