@@ -90,23 +90,22 @@ class FavoriteQuestionListViewTestCase(APITestBaseNeedAuthorized):
             self.assertEqual(response.status_code, status.HTTP_200_OK)
             self.assertEqual(response.data["count"], total_count)
 
-
-def test_get_questions_list_200_ok(self):
-    response = self.client.get(self.url)
-    self.assertEqual(response.status_code, status.HTTP_200_OK)
-    self.assertEqual(
-        response.data["results"],
-        QuestionSerializer(
-            instance=[
-                self.question,
-            ],
-            many=True,
-            context={"request": self.request},
-        ).data,
-    )
-    self.assertEqual(response.data["count"], 1)
-    self.assertIsNone(response.data["next"])
-    self.assertIsNone(response.data["previous"])
+    def test_get_questions_list_200_ok(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data["results"],
+            QuestionSerializer(
+                instance=[
+                    self.question,
+                ],
+                many=True,
+                context={"request": self.request},
+            ).data,
+        )
+        self.assertEqual(response.data["count"], 1)
+        self.assertIsNone(response.data["next"])
+        self.assertIsNone(response.data["previous"])
 
 
 class RandomQuestionViewTestCase(APITestBase):
