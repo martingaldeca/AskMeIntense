@@ -50,13 +50,27 @@ class RandomQuestionGetView(MultipleFieldLookupMixin, RetrieveAPIView):
     random_result_from_list = True
 
 
-@extend_schema(tags=["questions"])
+@extend_schema(
+    tags=["questions"],
+    parameters=[
+        OpenApiParameter(name="category", description=_("Category uuid"), type=str),
+        OpenApiParameter(name="level", description=_("Level uuid"), type=str),
+    ],
+)
 class FavoriteQuestionListView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = QuestionSerializer
 
     def get_queryset(self):
-        return self.request.user.favorite_questions.order_by("levels__number")
+        queryset = self.request.user.favorite_questions.order_by("levels__number")
+
+        if category_uuid := self.request.query_params.get("category", None):
+            queryset = queryset.filter(categories__uuid=category_uuid)
+
+        if level_uuid := self.request.query_params.get("level", None):
+            queryset = queryset.filter(levels__uuid=level_uuid)
+
+        return queryset
 
 
 @extend_schema(
