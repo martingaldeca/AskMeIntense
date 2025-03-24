@@ -50,11 +50,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "uuid",
-                    models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True),
+                    models.UUIDField(
+                        db_index=True, default=uuid.uuid4, editable=False, unique=True
+                    ),
                 ),
                 (
                     "name",
-                    models.CharField(help_text="Category name", max_length=255, verbose_name="Name"),
+                    models.CharField(
+                        help_text="Category name", max_length=255, verbose_name="Name"
+                    ),
                 ),
                 (
                     "description",
@@ -109,11 +113,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "uuid",
-                    models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True),
+                    models.UUIDField(
+                        db_index=True, default=uuid.uuid4, editable=False, unique=True
+                    ),
                 ),
                 (
                     "name",
-                    models.CharField(help_text="Level name", max_length=255, verbose_name="Name"),
+                    models.CharField(
+                        help_text="Level name", max_length=255, verbose_name="Name"
+                    ),
                 ),
                 (
                     "description",
@@ -172,7 +180,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "uuid",
-                    models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True),
+                    models.UUIDField(
+                        db_index=True, default=uuid.uuid4, editable=False, unique=True
+                    ),
                 ),
                 (
                     "question",
@@ -240,7 +250,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "uuid",
-                    models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True),
+                    models.UUIDField(
+                        db_index=True, default=uuid.uuid4, editable=False, unique=True
+                    ),
                 ),
                 (
                     "answer",
@@ -320,7 +332,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "uuid",
-                    models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True),
+                    models.UUIDField(
+                        db_index=True, default=uuid.uuid4, editable=False, unique=True
+                    ),
                 ),
                 (
                     "category",
@@ -409,7 +423,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "uuid",
-                    models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True),
+                    models.UUIDField(
+                        db_index=True, default=uuid.uuid4, editable=False, unique=True
+                    ),
                 ),
                 (
                     "proposing_user",
@@ -439,7 +455,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name="questionlevelcategory",
-            index=models.Index(fields=["level", "category"], name="questions_q_level_i_69db22_idx"),
+            index=models.Index(
+                fields=["level", "category"], name="questions_q_level_i_69db22_idx"
+            ),
         ),
         migrations.AlterUniqueTogether(
             name="questionlevelcategory",

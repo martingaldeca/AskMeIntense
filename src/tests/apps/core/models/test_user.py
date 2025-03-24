@@ -31,7 +31,9 @@ class UserTestCase(TestCase):
         refresh_token.__str__.return_value = "test_refresh"
 
         mock_refresh_token.return_value = refresh_token
-        self.assertEqual(user.tokens, {"refresh": "test_refresh", "access": "test_access"})
+        self.assertEqual(
+            user.tokens, {"refresh": "test_refresh", "access": "test_access"}
+        )
 
     def test_not_valid_login_method_message(self):
         test_data_list = [

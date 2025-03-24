@@ -18,7 +18,9 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
     @staticmethod
     def validate_auth_token(auth_token: str):
         user_data = verify_oauth2_token(auth_token, requests.Request())
-        if os.getenv("DEBUG") != "True" and user_data.get("aud") != os.getenv("GOOGLE_OAUTH2_CLIENT_ID"):
+        if os.getenv("DEBUG") != "True" and user_data.get("aud") != os.getenv(
+            "GOOGLE_OAUTH2_CLIENT_ID"
+        ):
             logger.error(
                 "Not valid client from google authentication",
                 extra={"auth_token": auth_token, "user_data": user_data},

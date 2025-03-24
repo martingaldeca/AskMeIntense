@@ -7,13 +7,17 @@ class MultipleFieldLookupMixin:
     random_result_from_list = False
 
     def get_object(self):
-        if self.lookup_url_kwargs and len(self.lookup_fields) != len(self.lookup_url_kwargs):
+        if self.lookup_url_kwargs and len(self.lookup_fields) != len(
+            self.lookup_url_kwargs
+        ):
             raise ValueError("lookup_fields and lookup_url_kwargs must be same length.")
 
         queryset = self.filter_queryset(self.get_queryset())
         filter_kwargs = {}
 
-        for lookup_field, lookup_url_kwarg in zip(self.lookup_fields, self.lookup_url_kwargs):
+        for lookup_field, lookup_url_kwarg in zip(
+            self.lookup_fields, self.lookup_url_kwargs
+        ):
             lookup = lookup_url_kwarg if lookup_url_kwarg else lookup_field
 
             assert lookup in self.kwargs, (

@@ -78,7 +78,9 @@ class RegisterSerializerTestCase(SerializerTestBase):
                     "email": email,
                     "password": password,
                 }
-                serializer = RegisterSerializer(data=data_to_validate, context=self.context)
+                serializer = RegisterSerializer(
+                    data=data_to_validate, context=self.context
+                )
                 with self.assertRaises(ValidationError) as expected_error:
                     serializer.is_valid(raise_exception=True)
                 self.assertEqual(

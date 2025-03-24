@@ -1,11 +1,11 @@
 repos:
   - repo: https://github.com/psf/black  # Black
-    rev: 24.10.0
+    rev: 25.1.0
     hooks:
       - id: black
   - repo: https://github.com/charliermarsh/ruff-pre-commit  # Ruff
     # Ruff version.
-    rev: 'v0.8.3'
+    rev: 'v0.11.2'
     hooks:
       - id: ruff
         args: [ --exit-non-zero-on-fix ]
@@ -21,11 +21,12 @@ repos:
       - id: name-tests-test
         args:
           - --pytest-test-first
+        exclude: '.*helpers.*'
       - id: pretty-format-json
         args:
           - --autofix
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.10.0  # Use the ref you want to point at
+    rev: v1.10.0
     hooks:
       - id: python-use-type-annotations
       - id: python-no-eval
@@ -35,7 +36,7 @@ repos:
       - id: rst-inline-touching-normal
       - id: text-unicode-replacement-char
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.0
+    rev: v3.19.1
     hooks:
       - id: pyupgrade
   - repo: https://github.com/shellcheck-py/shellcheck-py

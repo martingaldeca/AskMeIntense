@@ -11,8 +11,13 @@ class RegisterSocialUser:
         email = user_data.get("email")
         filtered_user_by_email = User.objects.filter(email=email)
 
-        if filtered_user_by_email.exists() and filtered_user_by_email[0].auth_provider != provider:
-            raise AuthenticationFailed(detail=filtered_user_by_email[0].not_valid_login_method_message)
+        if (
+            filtered_user_by_email.exists()
+            and filtered_user_by_email[0].auth_provider != provider
+        ):
+            raise AuthenticationFailed(
+                detail=filtered_user_by_email[0].not_valid_login_method_message
+            )
 
         if not filtered_user_by_email.exists():
             user = {
@@ -27,5 +32,7 @@ class RegisterSocialUser:
                 user["picture_url"] = user_picture
             User.objects.create_user(**user)
 
-        registered_user = authenticate(email=email, password=os.getenv("SOCIAL_AUTH_PASSWORD", "test_password"))
+        registered_user = authenticate(
+            email=email, password=os.getenv("SOCIAL_AUTH_PASSWORD", "test_password")
+        )
         return registered_user.tokens

@@ -47,16 +47,22 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
     picture_url = models.URLField(
         default="https://pbs.twimg.com/media/ChDbQ2DWgAA7LGx.jpg",
         verbose_name=_("Picture URL"),
-        help_text=_("Url of the picture profile. When auth login it will come from there."),
+        help_text=_(
+            "Url of the picture profile. When auth login it will come from there."
+        ),
     )
     avatar = models.CharField(
         choices=Avatars,
         default=Avatars.GREEN,
         max_length=255,
         verbose_name=_("Avatar name"),
-        help_text=_("Name of the avatar. It will be obtained from the frontend statics."),
+        help_text=_(
+            "Name of the avatar. It will be obtained from the frontend statics."
+        ),
     )
-    auth_provider = models.CharField(max_length=255, choices=AuthProviders, default=AuthProviders.EMAIL_PROVIDER)
+    auth_provider = models.CharField(
+        max_length=255, choices=AuthProviders, default=AuthProviders.EMAIL_PROVIDER
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -104,19 +110,25 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
     def liked_questions(self):
         from questions.models import Question
 
-        return Question.objects.filter(id__in=self.liked_reactions.values_list("question", flat=True))
+        return Question.objects.filter(
+            id__in=self.liked_reactions.values_list("question", flat=True)
+        )
 
     @property
     def disliked_questions(self):
         from questions.models import Question
 
-        return Question.objects.filter(id__in=self.disliked_reactions.values_list("question", flat=True))
+        return Question.objects.filter(
+            id__in=self.disliked_reactions.values_list("question", flat=True)
+        )
 
     @property
     def favorite_questions(self):
         from questions.models import Question
 
-        return Question.objects.filter(id__in=self.favorite_reactions.values_list("question", flat=True))
+        return Question.objects.filter(
+            id__in=self.favorite_reactions.values_list("question", flat=True)
+        )
 
     def is_liked_question(self, question):
         return question in self.liked_questions

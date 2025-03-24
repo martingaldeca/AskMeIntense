@@ -12,7 +12,9 @@ class UUIDModel(models.Model):
     This model allows you to have an indexed uuid field that should be unique
     """
 
-    uuid = models.UUIDField(db_index=True, default=uuid.uuid4, editable=False, unique=True)
+    uuid = models.UUIDField(
+        db_index=True, default=uuid.uuid4, editable=False, unique=True
+    )
 
     class Meta:
         abstract = True

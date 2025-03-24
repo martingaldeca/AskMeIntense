@@ -18,7 +18,9 @@ class CategoryListViewTestCase(APITestBase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data["results"],
-            CategorySerializer(instance=[self.category], many=True, context={"request": self.request}).data,
+            CategorySerializer(
+                instance=[self.category], many=True, context={"request": self.request}
+            ).data,
         )
         self.assertEqual(response.data["count"], 1)
         self.assertIsNone(response.data["next"])

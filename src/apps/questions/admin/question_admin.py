@@ -45,7 +45,9 @@ class QuestionAdmin(admin.ModelAdmin):
 
     short_example.short_description = _("Example")
 
-    def _process_questions(self, request, queryset, action, success_verb, error_message, verb_termination):
+    def _process_questions(
+        self, request, queryset, action, success_verb, error_message, verb_termination
+    ):
         success_count = 0
         problem_count = 0
 

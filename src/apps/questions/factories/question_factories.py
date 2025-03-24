@@ -16,7 +16,9 @@ class QuestionFactory(DjangoModelFactory):
     example = FuzzyText(prefix="Example of the answer for the question-", length=150)
 
     @post_generation
-    def add_level_categories(self: Question, create, extracted, **kwargs):  # pylint: disable=W0613
+    def add_level_categories(
+        self: Question, create, extracted, **kwargs
+    ):  # pylint: disable=W0613
         from questions.factories import CategoryFactory, LevelFactory
 
         min_entries = kwargs.get("min", 1)
@@ -29,8 +31,14 @@ class QuestionFactory(DjangoModelFactory):
         if total != 0:
             for _ in range(randint(min_entries, max_entries)):
                 self.add_level_category(
-                    level=LevelFactory(number=kwargs.get("level_number", randint(1, settings.MAX_LEVEL_ALLOWED))),
-                    category=CategoryFactory(name=kwargs.get("category_name", FuzzyText().fuzz())),
+                    level=LevelFactory(
+                        number=kwargs.get(
+                            "level_number", randint(1, settings.MAX_LEVEL_ALLOWED)
+                        )
+                    ),
+                    category=CategoryFactory(
+                        name=kwargs.get("category_name", FuzzyText().fuzz())
+                    ),
                 )  # pylint: disable=E1101
 
 

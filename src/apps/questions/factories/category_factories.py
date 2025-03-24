@@ -12,4 +12,8 @@ class CategoryFactory(DjangoModelFactory):
 
     name = FuzzyText(prefix="Category-")
     description = FuzzyText(prefix="Description-", length=50)
-    icon = LazyAttribute(lambda _: ContentFile(ImageField()._make_data({"width": 1024, "height": 768}), "icon.png"))
+    icon = LazyAttribute(
+        lambda _: ContentFile(
+            ImageField()._make_data({"width": 1024, "height": 768}), "icon.png"
+        )
+    )

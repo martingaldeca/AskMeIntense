@@ -1,5 +1,9 @@
 from django.test import TestCase
-from questions.factories import ApprovedQuestionFactory, DeniedQuestionFactory, QuestionFactory
+from questions.factories import (
+    ApprovedQuestionFactory,
+    DeniedQuestionFactory,
+    QuestionFactory,
+)
 from questions.models import Question
 
 
