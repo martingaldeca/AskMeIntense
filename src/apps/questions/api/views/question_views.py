@@ -9,7 +9,12 @@ from questions.api.serializers import (
 )
 from questions.models import Question, QuestionReaction
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+    get_object_or_404,
+)
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
@@ -43,6 +48,15 @@ class RandomQuestionGetView(MultipleFieldLookupMixin, RetrieveAPIView):
     lookup_fields = ["categories__uuid", "levels__uuid"]
     lookup_url_kwargs = ["category", "level"]
     random_result_from_list = True
+
+
+@extend_schema(tags=["questions"])
+class FavoriteQuestionListView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuestionSerializer
+
+    def get_queryset(self):
+        return self.request.user.favorite_questions.order_by("levels__number")
 
 
 @extend_schema(

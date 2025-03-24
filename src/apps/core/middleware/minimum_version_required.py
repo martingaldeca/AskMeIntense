@@ -26,7 +26,9 @@ class MinimumVersionRequired:
                 or "interested_user" in request.path
             ):
                 app_version = request.headers.get("Appversion", "0.0.0")
-                if version.parse(app_version) < version.parse(settings.MINIMUM_REQUIRED_APP_VERSION_ANDROID):
+                if version.parse(app_version) < version.parse(
+                    settings.MINIMUM_REQUIRED_APP_VERSION_ANDROID
+                ):
                     return JsonResponse(
                         data={"upgrade": settings.MINIMUM_REQUIRED_APP_VERSION_ANDROID},
                         status=status.HTTP_426_UPGRADE_REQUIRED,

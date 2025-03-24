@@ -1,3 +1,9 @@
 from .category_views import CategoryListView
 from .level_views import LevelListView
-from .question_views import QuestionListView, RandomQuestionGetView, ReactToQuestionView, RemoveReactionView
+from .question_views import (
+    QuestionListView,
+    RandomQuestionGetView,
+    ReactToQuestionView,
+    RemoveReactionView,
+    FavoriteQuestionListView,
+)

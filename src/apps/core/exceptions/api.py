@@ -20,7 +20,9 @@ class ApiBaseException(APIException):
 
     @property
     def detail(self):
-        return dict(self.extra, message=self.default_detail, type=self.__class__.__name__)
+        return dict(
+            self.extra, message=self.default_detail, type=self.__class__.__name__
+        )
 
 
 class BadRequestException(ApiBaseException):
