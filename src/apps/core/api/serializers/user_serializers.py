@@ -30,7 +30,9 @@ class MeSerializer(SimpleUserSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, help_text=_("Password of the user"))
+    password = serializers.CharField(
+        write_only=True, help_text=_("Password of the user")
+    )
 
     class Meta:
         model = User

@@ -13,4 +13,6 @@ class CategorySerializerTestCase(SerializerTestBase):
             "description": category.description,
             "icon": self.request.build_absolute_uri(category.icon.url),
         }
-        self.assertEqual(CategorySerializer(category, context=self.context).data, expected_data)
+        self.assertEqual(
+            CategorySerializer(category, context=self.context).data, expected_data
+        )

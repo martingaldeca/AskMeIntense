@@ -26,4 +26,6 @@ class MinimumVersionRequiredTestCase(APITestBase):
     def test_version_not_valid_format(self):
         response = self.client.get(self.url, HTTP_APPVERSION="not_valid_format")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual({"error": "Invalid version: 'not_valid_format'"}, response.json())
+        self.assertEqual(
+            {"error": "Invalid version: 'not_valid_format'"}, response.json()
+        )

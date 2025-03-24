@@ -21,7 +21,11 @@ class Category(TimeStampedUUIDModel):
         help_text=_("Category description"),
     )
     icon = models.ImageField(
-        null=True, blank=True, upload_to=handle_storage, verbose_name=_("Icon"), help_text=_("Category icon")
+        null=True,
+        blank=True,
+        upload_to=handle_storage,
+        verbose_name=_("Icon"),
+        help_text=_("Category icon"),
     )
 
     class Meta:

@@ -10,7 +10,7 @@ RUN mkdir -p /src
 WORKDIR /src
 
 # Install dockerize to avoid startup problems (waiting for DB to start)
-ENV DOCKERIZE_VERSION=v0.8.0
+ENV DOCKERIZE_VERSION=v0.9.3
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz -O - | tar -C /usr/local/bin -xzv
 
 # Create logs dir
@@ -20,7 +20,7 @@ RUN mkdir -p /src/logs
 COPY src/ /src/
 
 # Install all the requirements
-RUN pip install poetry==1.8.5
+RUN pip install poetry==2.1.1
 RUN poetry config virtualenvs.create false && poetry install
 
 # Add terminal colors

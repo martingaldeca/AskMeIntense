@@ -1,4 +1,4 @@
-from core.api.api_test_helpers import APITestBase
+from core.api.api_test_helpers import APITestBase, APITestBaseNeedAuthorized
 from core.api.serializers import MeSerializer
 from core.factories import UserFactory
 from core.models import User
@@ -10,7 +10,7 @@ class RegisterViewTestCase(APITestBase):
     url = reverse("core:register")
 
     def setUp(self):
-        super(RegisterViewTestCase, self).setUp()
+        super().setUp()
         self.sent_data = {
             "email": "foo@foo.com",
             "password": "ThisIsARealValidPassword",
@@ -46,24 +46,20 @@ class RegisterViewTestCase(APITestBase):
         for test_data in test_data_list:
             with self.subTest(test_data=test_data):
                 email, password, detail_key, expected_code = test_data
-                response = self.client.post(self.url, data={"email": email, "password": password})
+                response = self.client.post(
+                    self.url, data={"email": email, "password": password}
+                )
                 self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
                 self.assertEqual(response.data[detail_key][0].code, expected_code)
 
 
-class MeDetailViewTestCase(APITestBase):
+class MeDetailViewTestCase(APITestBaseNeedAuthorized):
     url = reverse("core:me")
 
     def test_get_me_detail_200_ok(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, MeSerializer(self.user).data)
-
-    def test_get_me_detail_not_logged_401_unauthorized(self):
-        self.client.logout()
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-        self.assertEqual(response.data["detail"].code, "not_authenticated")
 
     def test_patch_me_detail_200_ok(self):
         data_to_patch = {
