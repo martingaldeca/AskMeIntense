@@ -6,7 +6,12 @@ from questions.api.serializers import (
     QuestionSerializer,
     SimpleQuestionSerializer,
 )
-from questions.factories import DislikedQuestionFactory, FavoriteQuestionFactory, LikedQuestionFactory, QuestionFactory
+from questions.factories import (
+    DislikedQuestionFactory,
+    FavoriteQuestionFactory,
+    LikedQuestionFactory,
+    QuestionFactory,
+)
 from questions.models import Question, QuestionReaction
 
 
@@ -22,7 +27,9 @@ class SimpleQuestionSerializerTestCase(SerializerTestBase):
             "disliked": False,
             "favorite": False,
         }
-        self.assertEqual(SimpleQuestionSerializer(question, context=self.context).data, expected_data)
+        self.assertEqual(
+            SimpleQuestionSerializer(question, context=self.context).data, expected_data
+        )
 
     def test_liked_disliked_and_favorite(self):
         test_data_list = [
@@ -43,7 +50,10 @@ class SimpleQuestionSerializerTestCase(SerializerTestBase):
                     "disliked": disliked,
                     "favorite": favorite,
                 }
-                self.assertEqual(SimpleQuestionSerializer(question, context=self.context).data, expected_data)
+                self.assertEqual(
+                    SimpleQuestionSerializer(question, context=self.context).data,
+                    expected_data,
+                )
 
 
 class QuestionSerializerTestCase(SerializerTestBase):
@@ -54,13 +64,19 @@ class QuestionSerializerTestCase(SerializerTestBase):
             "question": question.question,
             "status": question.status,
             "example": question.example,
-            "categories": CategorySerializer(question.categories.all(), many=True, context=self.context).data,
-            "levels": LevelSerializer(question.levels.all(), many=True, context=self.context).data,
+            "categories": CategorySerializer(
+                question.categories.all(), many=True, context=self.context
+            ).data,
+            "levels": LevelSerializer(
+                question.levels.all(), many=True, context=self.context
+            ).data,
             "liked": False,
             "disliked": False,
             "favorite": False,
         }
-        self.assertEqual(QuestionSerializer(question, context=self.context).data, expected_data)
+        self.assertEqual(
+            QuestionSerializer(question, context=self.context).data, expected_data
+        )
 
 
 class AddOrRemoveReactionSerializerTestCase(SerializerTestBase):
@@ -75,14 +91,20 @@ class AddOrRemoveReactionSerializerTestCase(SerializerTestBase):
             "disliked": False,
             "favorite": False,
         }
-        self.assertEqual(AddOrRemoveReactionSerializer(question, context=self.context).data, expected_data)
+        self.assertEqual(
+            AddOrRemoveReactionSerializer(question, context=self.context).data,
+            expected_data,
+        )
 
     def test_data_validation_valid(self):
         serializer = AddOrRemoveReactionSerializer(
-            data={"reaction": QuestionReaction.ReactionChoices.LIKE}, context=self.context
+            data={"reaction": QuestionReaction.ReactionChoices.LIKE},
+            context=self.context,
         )
         self.assertTrue(serializer.is_valid())
 
     def test_data_validation_invalid(self):
-        serializer = AddOrRemoveReactionSerializer(data={"reaction": "not_valid_reaction"}, context=self.context)
+        serializer = AddOrRemoveReactionSerializer(
+            data={"reaction": "not_valid_reaction"}, context=self.context
+        )
         self.assertFalse(serializer.is_valid())
