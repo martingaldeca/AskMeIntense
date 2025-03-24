@@ -67,8 +67,15 @@ class FavoriteQuestionListViewTestCase(APITestBaseNeedAuthorized):
 
     def setUp(self):
         super().setUp()
-        self.question: Question = FavoriteQuestionFactory(add_reaction__user=self.user)
-        self.not_favorite_question: Question = ApprovedQuestionFactory()
+        self.question: Question = FavoriteQuestionFactory(
+            add_reaction__user=self.user,
+            add_level_categories__level_number=2,
+            add_level_categories__category_name="testing2",
+        )
+        self.not_favorite_question: Question = ApprovedQuestionFactory(
+            add_level_categories__level_number=1,
+            add_level_categories__category_name="testing",
+        )
 
     def test_get_question_list_by_category_200_ok(self):
         test_data_list = [
