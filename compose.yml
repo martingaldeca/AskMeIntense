@@ -7,6 +7,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend/Dockerfile
+    command: sh /scripts/post_deploy.sh
     volumes:
       - ./src:/src/
       - vol_logs_askmeintense:/src/logs
@@ -19,6 +20,7 @@ services:
       - askmeintense_network
     depends_on:
       - postgres
+      - broker
     logging:
       driver: "json-file"
       options:
@@ -63,6 +65,82 @@ services:
       - ./docker/nginx/privkey.pem:/privkey.pem
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - vol_media_askmeintense:/src/media
+    networks:
+      - askmeintense_network
+
+  worker:
+    container_name: ${PROJECT_NAME}_worker
+    hostname: worker
+    image: ${PROJECT_NAME}_backend_image
+    restart: always
+    env_file:
+      - .env
+    environment:
+      WORKER_NAME: default_worker
+      WORKER_QUEUES: default
+    command: sh /scripts/run_worker.sh
+    volumes:
+      - ./src/.:/src
+      - vol_logs_askmeintense:/src/logs
+    depends_on:
+      - backend
+      - broker
+    links:
+      - postgres
+      - broker
+    networks:
+      - askmeintense_network
+
+  beat:
+    container_name: ${PROJECT_NAME}_beat
+    hostname: beat
+    image: ${PROJECT_NAME}_backend_image
+    restart: always
+    env_file:
+      - .env
+    environment:
+      WORKER_NAME: beat_worker
+      WORKER_QUEUES: default
+    command: sh /scripts/run_beat.sh
+    volumes:
+      - ./src/.:/src
+      - vol_logs_askmeintense:/src/logs
+    depends_on:
+      - broker
+      - worker
+    links:
+      - postgres
+      - broker
+    networks:
+      - askmeintense_network
+
+  flower:
+    container_name: ${PROJECT_NAME}_flower
+    image: ${PROJECT_NAME}_backend_image
+    hostname: flower
+    restart: always
+    env_file:
+      - .env
+    environment:
+      FLOWER_BROKER: amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@broker:${BROKER_PORT}
+    command: sh /scripts/run_flower.sh
+    depends_on:
+      - backend
+      - broker
+    links:
+      - broker
+    volumes:
+      - ./src/.:/src
+      - vol_logs_askmeintense:/src/logs
+    networks:
+      - askmeintense_network
+
+  broker:
+    hostname: broker
+    container_name: ${PROJECT_NAME}_broker
+    image: rabbitmq:4.0.7
+    env_file:
+      - .env
     networks:
       - askmeintense_network
 

@@ -60,6 +60,7 @@ INTERNAL_APPS = [
     "core",
     "social_auth",
     "questions",
+    "data"
 ]
 
 EXTERNAL_LIBRARIES = [
@@ -377,7 +378,9 @@ SHELL_PLUS = "ipython"
 if DEBUG_SQL:
     SHELL_PLUS_PRINT_SQL = True
     SHELL_PLUS_PRINT_SQL_TRUNCATE = None
-SHELL_PLUS_IMPORTS = []
+SHELL_PLUS_IMPORTS = [
+    'from data.tasks import *',
+]
 
 if not PRODUCTION:
     FACTORIES_TO_IMPORT = [
