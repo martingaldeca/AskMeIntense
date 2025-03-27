@@ -56,12 +56,7 @@ STORAGES = {
     },
 }
 
-INTERNAL_APPS = [
-    "core",
-    "social_auth",
-    "questions",
-    "data"
-]
+INTERNAL_APPS = ["core", "social_auth", "questions", "data"]
 
 EXTERNAL_LIBRARIES = [
     "simple_history",
@@ -379,7 +374,7 @@ if DEBUG_SQL:
     SHELL_PLUS_PRINT_SQL = True
     SHELL_PLUS_PRINT_SQL_TRUNCATE = None
 SHELL_PLUS_IMPORTS = [
-    'from data.tasks import *',
+    "from data.tasks import *",
 ]
 
 if not PRODUCTION:
