@@ -12,7 +12,6 @@ class DataEventSerializer(serializers.Serializer):
 
     def is_valid(self, raise_exception=False, user: User = None):
         validation = super().is_valid(raise_exception=raise_exception)
-
         if (
             event_type := self.validated_data["event_type"]
         ) and event_type not in events.keys():
@@ -22,7 +21,7 @@ class DataEventSerializer(serializers.Serializer):
         return validation
 
     def device_parser(self, request):
-        user_agent = parse(request.META.get("HTTP_USER_AGENT"))
+        user_agent = parse(request.META.get("HTTP_USER_AGENT", ""))
         self.validated_data["device"] = {
             "ip": request.META.get("REMOTE_ADDR"),
             "locale": request.META.get("DEFAULT_LOCALE"),

@@ -18,17 +18,23 @@ class StartGameAfterSelectedCategoryAndLevelClickEvent(FrontendDataEvent):
 
 class LevelSelectedEvent(FrontendDataEvent):
     event_type = "level_selected"
-    description = "This event is triggered when any user select a level in the selectors."
+    description = (
+        "This event is triggered when any user select a level in the selectors."
+    )
 
 
 class CategorySelectedEvent(FrontendDataEvent):
     event_type = "category_selected"
-    description = "This event is triggered when any user select a category in the selectors."
+    description = (
+        "This event is triggered when any user select a category in the selectors."
+    )
 
 
 class QuestionDetailDisplayedEvent(FrontendDataEvent):
     event_type = "question_detail_displayed"
-    description = "This event is triggered when a question detail is displayed in the frontend."
+    description = (
+        "This event is triggered when a question detail is displayed in the frontend."
+    )
 
 
 class NextRandomQuestionClickEvent(FrontendDataEvent):

@@ -15,7 +15,6 @@ def send_event(
     app_version="0.0.0",
     location=None,
     device=None,
-    update_user_profile=False,
 ):
     if (
         request_headers is not None
@@ -25,16 +24,18 @@ def send_event(
         app_version = appversion[1]
     if user_identifier:
         user = User.objects.get(uuid=user_identifier)
-        user_properties = user.properties_dict
+        user_properties = {**user.properties_dict, **user_properties}
 
-    events[event_type](
+    event = events[event_type](
         user_identifier=user_identifier,
         extra_info=extra_info,
         user_properties=user_properties,
         app_version=app_version,
         location=location,
         device=device,
-    ).send()
+    )
+    event.send()
+    return event
 
 
 def rsync_user_properties():

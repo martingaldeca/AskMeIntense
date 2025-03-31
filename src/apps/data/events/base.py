@@ -31,7 +31,7 @@ class DataEvent:
         extra_info: dict = None,
         user_properties: str = None,
         app_version: str = None,
-        location: dict = None,
+        location: str = None,
         device: dict = None,
         description: str = None,
         sender_agent: str = None,
@@ -75,7 +75,7 @@ class DataEvent:
         except Exception as ex:
             logger.error(
                 "Problem sending event to data-events",
-                extra={"event": str(self), "exception": ex},
+                extra={"event": str(self), "exception": str(ex)},
             )
             raise ex
 
@@ -90,6 +90,7 @@ class DataEvent:
                     "error": response.json().get("event_error", None),
                 },
             )
+        return response.json()
 
 
 class BackendDataEvent(DataEvent):

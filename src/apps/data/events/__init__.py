@@ -11,7 +11,7 @@ from .front_events import (
     CategorySelectedEvent,
     StartGameAfterSelectedCategoryAndLevelClickEvent,
     QuestionDetailDisplayedEvent,
-    NextRandomQuestionClickEvent
+    NextRandomQuestionClickEvent,
 )
 
 # Document events
