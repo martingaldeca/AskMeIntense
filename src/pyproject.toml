@@ -31,6 +31,7 @@ django-waffle = "4.2.0"
 celery = "5.4.0"
 django-celery-beat = "2.7.0"
 flower = "2.0.1"
+user-agents = "2.2.0"
 
 [tool.poetry.group.test.dependencies]
 black = "25.1.0"

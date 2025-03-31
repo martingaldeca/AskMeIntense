@@ -134,6 +134,8 @@ services:
       - vol_logs_askmeintense:/src/logs
     networks:
       - askmeintense_network
+    ports:
+      - "5555:5555"
 
   broker:
     hostname: broker
@@ -141,6 +143,8 @@ services:
     image: rabbitmq:4.0.7
     env_file:
       - .env
+    ports:
+      - "15672:15672"
     networks:
       - askmeintense_network
 

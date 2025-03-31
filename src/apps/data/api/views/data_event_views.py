@@ -16,7 +16,7 @@ class DataEventView(APIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
+        serializer.is_valid(raise_exception=True, user=request.user)
+        serializer.device_parser(request)
         send_event.delay(**serializer.validated_data)
         return Response(status=status.HTTP_201_CREATED)

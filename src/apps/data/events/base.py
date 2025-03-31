@@ -1,4 +1,3 @@
-import ast
 import logging
 import os
 from functools import cached_property
@@ -29,7 +28,7 @@ class DataEvent:
     def __init__(
         self,
         user_identifier: str = None,
-        extra_info: str = None,
+        extra_info: dict = None,
         user_properties: str = None,
         app_version: str = None,
         location: dict = None,
@@ -53,11 +52,12 @@ class DataEvent:
 
     @property
     def data(self):
+        self.extra_info["sender_agent"] = self.sender_agent
         return {
             "timestamp": timezone.now().isoformat(),
             "event_type": self.event_type,
             "user_identifier": self.user_identifier,
-            "extra_info": ast.literal_eval(self.extra_info),
+            "extra_info": self.extra_info,
             "user_properties": self.user_properties,
             "app_version": self.app_version,
             "location": self.location,
@@ -70,6 +70,7 @@ class DataEvent:
 
     def send(self):
         try:
+            logger.info(self.data)
             response = requests.post(self.url, json=self.data, headers=self.headers)
         except Exception as ex:
             logger.error(

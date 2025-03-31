@@ -23,14 +23,9 @@ def send_event(
         and (appversion := store.get("appversion"))
     ):
         app_version = appversion[1]
-    if update_user_profile:
+    if user_identifier:
         user = User.objects.get(uuid=user_identifier)
-        user_properties = {
-            "email": user.user.email,
-            "username": user.user.username,
-            "first_name": user.user.first_name,
-            "last_name": user.user.last_name,
-        }
+        user_properties = user.properties_dict
 
     events[event_type](
         user_identifier=user_identifier,
@@ -44,12 +39,7 @@ def send_event(
 
 def rsync_user_properties():
     for user in User.objects.all():
-        user_properties = {
-            "email": user.user.email,
-            "username": user.user.username,
-            "first_name": user.user.first_name,
-            "last_name": user.user.last_name,
-        }
+        user_properties = user.properties_dict
         events["rsync_user_properties_event"](
             user_identifier=user.uuid.hex,
             user_properties=user_properties,
