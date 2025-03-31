@@ -40,3 +40,24 @@ class QuestionDetailDisplayedEvent(FrontendDataEvent):
 class NextRandomQuestionClickEvent(FrontendDataEvent):
     event_type = "next_random_question"
     description = "This event is triggered when a next random question is clicked."
+
+
+
+class NavigatorHomeClickEvent(FrontendDataEvent):
+    event_type = "navigator_home_click"
+    description = "This event is triggered when a navigator home button is clicked."
+
+
+class NavigatorFavoritesClickEvent(FrontendDataEvent):
+    event_type = "navigator_favorites_click"
+    description = "This event is triggered when a navigator favorites button is clicked."
+
+
+class NavigatorProfileClickEvent(FrontendDataEvent):
+    event_type = "navigator_profile_click"
+    description = "This event is triggered when a navigator profile button is clicked."
+
+
+class NavigatorLoginClickEvent(FrontendDataEvent):
+    event_type = "navigator_profile_click"
+    description = "This event is triggered when a navigator profile button is clicked."
