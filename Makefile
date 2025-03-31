@@ -64,6 +64,10 @@ test: install-test-dependencies
 fast-test:
 	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --keepdb --failfast
 
+test-recreate:
+	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --noinput
+
+
 report:
 	$s docker exec ${PROJECT_NAME}_backend coverage html
 
