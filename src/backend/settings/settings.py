@@ -56,11 +56,7 @@ STORAGES = {
     },
 }
 
-INTERNAL_APPS = [
-    "core",
-    "social_auth",
-    "questions",
-]
+INTERNAL_APPS = ["core", "social_auth", "questions", "data"]
 
 EXTERNAL_LIBRARIES = [
     "simple_history",
@@ -302,6 +298,7 @@ ALLOWED_HOSTS = [
     "http://localhost",
     "http://0.0.0.0",
     "http://127.0.0.1",
+    "192.168.1.131",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -377,7 +374,9 @@ SHELL_PLUS = "ipython"
 if DEBUG_SQL:
     SHELL_PLUS_PRINT_SQL = True
     SHELL_PLUS_PRINT_SQL_TRUNCATE = None
-SHELL_PLUS_IMPORTS = []
+SHELL_PLUS_IMPORTS = [
+    "from data.tasks import *",
+]
 
 if not PRODUCTION:
     FACTORIES_TO_IMPORT = [

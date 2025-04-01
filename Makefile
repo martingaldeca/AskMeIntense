@@ -21,9 +21,9 @@ up: prepare-env
 down:
 	$s docker compose down
 
-down-up: down up
+down-up: down up connect-events-network
 
-up-build: down build up
+up-build: down build up connect-events-network
 
 build: prepare-env
 	$s docker compose build
@@ -63,6 +63,10 @@ test: install-test-dependencies
 
 fast-test:
 	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --keepdb --failfast
+
+test-recreate:
+	$s docker exec ${PROJECT_NAME}_backend coverage run manage.py test --parallel=${TEST_WORKERS} --noinput
+
 
 report:
 	$s docker exec ${PROJECT_NAME}_backend coverage html
@@ -106,3 +110,38 @@ compile-messages:
 	$s docker exec -it ${PROJECT_NAME}_backend python manage.py compilemessages -v 3
 
 messages: make-messages compile-messages
+
+connect-events-network:
+	@# Connect backend only if not already connected
+	@if ! docker network inspect events-manager_default --format '{{json .Containers}}' | grep -q "${PROJECT_NAME}_backend"; then \
+		$s docker network connect events-manager_default ${PROJECT_NAME}_backend; \
+	fi
+	@# Connect worker only if not already connected
+	@if ! docker network inspect events-manager_default --format '{{json .Containers}}' | grep -q "${PROJECT_NAME}_worker"; then \
+		$s docker network connect events-manager_default ${PROJECT_NAME}_worker; \
+	fi
+	@# Connect beat only if not already connected
+	@if ! docker network inspect events-manager_default --format '{{json .Containers}}' | grep -q "${PROJECT_NAME}_beat"; then \
+		$s docker network connect events-manager_default ${PROJECT_NAME}_beat; \
+	fi
+
+worker-logs:
+	$s docker logs --tail ${TAIL_LOGS} -f ${PROJECT_NAME}_worker
+
+beat-logs:
+	$s docker logs --tail ${TAIL_LOGS} -f ${PROJECT_NAME}_beat
+
+flower-logs:
+	$s docker logs --tail ${TAIL_LOGS} -f ${PROJECT_NAME}_flower
+
+worker-bash:
+	$s docker exec -it ${PROJECT_NAME}_worker bash
+
+beat-bash:
+	$s docker exec -it ${PROJECT_NAME}_worker beat
+
+flower-bash:
+	$s docker exec -it ${PROJECT_NAME}_worker flower
+
+all-logs:
+	$s docker-compose logs --tail ${TAIL_LOGS} -f
