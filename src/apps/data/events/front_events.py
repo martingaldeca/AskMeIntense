@@ -42,7 +42,6 @@ class NextRandomQuestionClickEvent(FrontendDataEvent):
     description = "This event is triggered when a next random question is clicked."
 
 
-
 class NavigatorHomeClickEvent(FrontendDataEvent):
     event_type = "navigator_home_click"
     description = "This event is triggered when a navigator home button is clicked."
@@ -50,7 +49,9 @@ class NavigatorHomeClickEvent(FrontendDataEvent):
 
 class NavigatorFavoritesClickEvent(FrontendDataEvent):
     event_type = "navigator_favorites_click"
-    description = "This event is triggered when a navigator favorites button is clicked."
+    description = (
+        "This event is triggered when a navigator favorites button is clicked."
+    )
 
 
 class NavigatorProfileClickEvent(FrontendDataEvent):
@@ -61,3 +62,35 @@ class NavigatorProfileClickEvent(FrontendDataEvent):
 class NavigatorLoginClickEvent(FrontendDataEvent):
     event_type = "navigator_profile_click"
     description = "This event is triggered when a navigator profile button is clicked."
+
+
+class LoginButtonClickEvent(FrontendDataEvent):
+    event_type = "login_button_click"
+    description = "This event is triggered when a login button is clicked."
+
+
+class RegisterButtonClickEvent(FrontendDataEvent):
+    event_type = "register_button_click"
+    description = "This event is triggered when a register button is clicked."
+
+
+class PasswordForgotClickEvent(FrontendDataEvent):
+    event_type = "password_forgot_click"
+    description = "This event is triggered when a password forgot button is clicked."
+
+
+class CompleteLoginButtonClickEvent(FrontendDataEvent):
+    event_type = "complete_login_button_click"
+    description = "This event is triggered when a complete login button is clicked."
+
+
+class RegisterFromLoginButtonClickEvent(FrontendDataEvent):
+    event_type = "register_from_login_button_click"
+    description = (
+        "This event is triggered when a register from login button is clicked."
+    )
+
+
+class LogoutEvent(FrontendDataEvent):
+    event_type = "logout"
+    description = "This event is triggered when a logout button is clicked."

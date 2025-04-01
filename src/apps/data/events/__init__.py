@@ -16,6 +16,12 @@ from .front_events import (
     NavigatorFavoritesClickEvent,
     NavigatorProfileClickEvent,
     NavigatorLoginClickEvent,
+    LoginButtonClickEvent,
+    RegisterButtonClickEvent,
+    PasswordForgotClickEvent,
+    CompleteLoginButtonClickEvent,
+    RegisterFromLoginButtonClickEvent,
+    LogoutEvent,
 )
 
 # Document events
@@ -34,4 +40,10 @@ events = {
     NavigatorFavoritesClickEvent.event_type: NavigatorFavoritesClickEvent,
     NavigatorProfileClickEvent.event_type: NavigatorProfileClickEvent,
     NavigatorLoginClickEvent.event_type: NavigatorLoginClickEvent,
+    LoginButtonClickEvent.event_type: LoginButtonClickEvent,
+    RegisterButtonClickEvent.event_type: RegisterButtonClickEvent,
+    PasswordForgotClickEvent.event_type: PasswordForgotClickEvent,
+    CompleteLoginButtonClickEvent.event_type: CompleteLoginButtonClickEvent,
+    RegisterFromLoginButtonClickEvent.event_type: RegisterFromLoginButtonClickEvent,
+    LogoutEvent.event_type: LogoutEvent,
 }
