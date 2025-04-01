@@ -76,6 +76,19 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
     def __str__(self):
         return self.email
 
+    @property
+    def properties_dict(self):
+        return {
+            "email": self.email,
+            "birthdate": str(self.birthdate),
+            "is_verified": self.is_verified,
+            "picture_url": self.picture_url,
+            "avatar": self.avatar,
+            "auth_provider": self.auth_provider,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+        }
+
     def verify(self):
         logger.info("User '%s' was verified", self)
         self.is_verified = True
