@@ -18,7 +18,7 @@ class QuestionListViewTestCase(APITestBase):
 
     def setUp(self):
         super().setUp()
-        self.question: Question = ApprovedQuestionFactory()
+        self.question: Question = ApprovedQuestionFactory(add_level_categories__total=1)
 
     def test_get_questions_list_200_ok(self):
         response = self.client.get(self.url)
