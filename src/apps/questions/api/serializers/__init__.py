@@ -1,8 +1,8 @@
 from .category_serializers import CategorySerializer
 from .level_serializers import LevelSerializer
 from .question_serializers import (
+    AddOrRemoveInputReactionRequestSerializer,
+    AddOrRemoveReactionSerializer,
     QuestionSerializer,
     SimpleQuestionSerializer,
-    AddOrRemoveReactionSerializer,
-    AddOrRemoveInputReactionRequestSerializer,
 )

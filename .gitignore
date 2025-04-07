@@ -138,3 +138,7 @@ backend/static
 backend/.ruff_cache
 
 *.pem
+
+# Celery stuff
+backend/celerybeat-*
+/src/celerybeat-schedule*
