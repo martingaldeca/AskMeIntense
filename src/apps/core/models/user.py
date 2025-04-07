@@ -52,6 +52,8 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
         ),
     )
     avatar = models.CharField(
+        blank=True,
+        null=True,
         choices=Avatars,
         default=Avatars.GREEN,
         max_length=255,
@@ -61,7 +63,11 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
         ),
     )
     auth_provider = models.CharField(
-        max_length=255, choices=AuthProviders, default=AuthProviders.EMAIL_PROVIDER
+        blank=True,
+        null=True,
+        max_length=255,
+        choices=AuthProviders,
+        default=AuthProviders.EMAIL_PROVIDER,
     )
 
     USERNAME_FIELD = "email"
