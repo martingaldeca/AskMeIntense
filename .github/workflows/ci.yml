@@ -89,6 +89,7 @@ jobs:
           echo "POSTGRES_DB=postgres_test" >> .env-dist
           echo "POSTGRES_HOST=localhost" >> .env-dist
           echo "SOURCE_ROOT_PATH=./src" >> .env-dist
+          echo "CELERY_ALWAYS_EAGER=True" >> .env-dist
       - name: Setup default env values
         uses: cardinalby/export-env-action@v2
         with:

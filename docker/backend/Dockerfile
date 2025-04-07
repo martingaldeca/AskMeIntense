@@ -29,5 +29,6 @@ COPY docker/backend/.bashrc /root/.bashrc
 # Prepare the CMD command with the script to be run at the begining of the deploy
 RUN mkdir -p /scripts
 COPY docker/backend/post_deploy.sh /scripts/post_deploy.sh
-
-CMD /scripts/post_deploy.sh
+COPY docker/backend/run_beat.sh /scripts/run_beat.sh
+COPY docker/backend/run_flower.sh /scripts/run_flower.sh
+COPY docker/backend/run_worker.sh /scripts/run_worker.sh

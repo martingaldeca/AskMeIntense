@@ -29,6 +29,7 @@ urlpatterns = (
         path("api/", include("social_auth.api.urls", "social_auth")),
         path("api/", include("core.api.urls", "core")),
         path("api/", include("questions.api.urls", "questions")),
+        path("api/", include("data.api.urls", "data")),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

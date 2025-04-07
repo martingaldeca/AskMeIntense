@@ -52,6 +52,8 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
         ),
     )
     avatar = models.CharField(
+        blank=True,
+        null=True,
         choices=Avatars,
         default=Avatars.GREEN,
         max_length=255,
@@ -61,7 +63,11 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
         ),
     )
     auth_provider = models.CharField(
-        max_length=255, choices=AuthProviders, default=AuthProviders.EMAIL_PROVIDER
+        blank=True,
+        null=True,
+        max_length=255,
+        choices=AuthProviders,
+        default=AuthProviders.EMAIL_PROVIDER,
     )
 
     USERNAME_FIELD = "email"
@@ -75,6 +81,19 @@ class User(AbstractUser, TimeStampedUUIDModel, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    @property
+    def properties_dict(self):
+        return {
+            "email": self.email,
+            "birthdate": str(self.birthdate),
+            "is_verified": self.is_verified,
+            "picture_url": self.picture_url,
+            "avatar": self.avatar,
+            "auth_provider": self.auth_provider,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+        }
 
     def verify(self):
         logger.info("User '%s' was verified", self)
