@@ -145,3 +145,14 @@ flower-bash:
 
 all-logs:
 	$s docker-compose logs --tail ${TAIL_LOGS} -f
+
+renew-certificate: down
+	$ sudo certbot certonly --standalone -d backend.askmeintense.com
+	$ cd docker/nginx/
+	$ sudo rm -r fullchain.pem
+	$ sudo rm -r privkey.pem
+	$ sudo cp /etc/letsencrypt/live/backend.askmeintense.com-0001/fullchain.pem fullchain.pem
+	$ sudo cp /etc/letsencrypt/live/backend.askmeintense.com-0001/privkey.pem privkey.pem
+	$ cd ..
+	$ cd ..
+	$ make
